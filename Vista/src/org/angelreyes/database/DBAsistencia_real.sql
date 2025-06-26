@@ -14,7 +14,8 @@ create table Persona (
 
 create table Asistencia (
 	idAsistencia int not null,
-    fecha_hora datetime,
+    horaEntrada datetime,
+    horaSalida datetime,
     idPersona int not null ,
     constraint pk_Asistencia primary key (idAsistencia),
     constraint fk_Asistencia_Persona foreign key (idPersona)
@@ -64,8 +65,8 @@ delimiter //
 	in p_idasistencia int,
 	in p_idpersona int)
 		begin
-			insert into asistencia (idasistencia, fecha_hora, idpersona)
-			values (p_idasistencia, now(), p_idpersona);
+			insert into asistencia (idasistencia, horaEntrada,horaSalida, idpersona)
+			values (p_idasistencia, now(),null, p_idpersona);
 		end
 //delimiter ;
 call sp_agregarAsistencia(1,1);
@@ -77,7 +78,9 @@ delimiter //
 	create procedure sp_listarAsistencia()
 		begin
 			select A.idAsistencia,
-				   A.fecha_hora,
+				   P.idPersona,
+				   A.horaEntrada,
+                   A.horaSalida,
 				   P.nombrePersona,
 				   P.apellidoPersona,
                    P.carnetPersona
@@ -87,4 +90,3 @@ delimiter //
         end
 //delimiter ;
 call sp_listarAsistencia();
-
