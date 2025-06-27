@@ -42,3 +42,12 @@
     -fx-background-color:#6699ff;
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
 }
+.botones_extra{
+    -fx-background-color:#5572b4;
+}
+.botones_extra:hover{
+    -fx-cursor: hand;
+}
+.botones_extra:pressed{
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
+}

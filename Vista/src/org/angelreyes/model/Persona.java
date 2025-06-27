@@ -8,13 +8,15 @@ public class Persona {
 
     private String nombrePersona, apellidoPersona, correoPersona, carnetPersona;
     private int idPersona;
+    private byte[] fotoPersona;
 
-    public Persona(int idPersona, String nombrePersona, String apellidoPersona, String correoPersona, String carnetPersona) {
+    public Persona(int idPersona, String nombrePersona, String apellidoPersona, String correoPersona, String carnetPersona, byte[] fotoPersona) {
         this.idPersona = idPersona;
         this.nombrePersona = nombrePersona;
         this.apellidoPersona = apellidoPersona;
         this.correoPersona = correoPersona;
         this.carnetPersona = carnetPersona;
+        this.fotoPersona = fotoPersona;
     }
 
     public String getNombrePersona() {
@@ -55,6 +57,14 @@ public class Persona {
 
     public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
+    }
+
+    public byte[] getFotoPersona() {
+        return fotoPersona;
+    }
+
+    public void setFotoPersona(byte[] fotoPersona) {
+        this.fotoPersona = fotoPersona;
     }
 
 }
