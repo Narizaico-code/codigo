@@ -22,3 +22,23 @@
 .anchor-pane{
     -fx-background-color: linear-gradient(to right, lightblue, white);
 }
+.boton{
+    -fx-background-color:#6699ff;
+}
+.boton-transparente{
+    -fx-background-color:#626d86;
+}
+.boton:hover{
+    -fx-cursor: hand;
+}
+.boton-transparente:hover{
+    -fx-cursor: hand;
+}
+.boton-transparente:pressed{
+    -fx-background-color:#6699ff;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,5.2), 10, 0.0, 0, 1);
+}
+.boton:pressed{
+    -fx-background-color:#6699ff;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
+}

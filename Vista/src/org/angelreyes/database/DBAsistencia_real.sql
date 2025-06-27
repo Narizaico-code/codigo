@@ -52,7 +52,8 @@ delimiter //
 			select 
             P.idPersona, 
             P.nombrePersona, 
-            P.apellidoPersona, P.correoPersona, 
+            P.apellidoPersona, 
+            P.correoPersona, 
             P.carnetPersona
             from Persona P;
         end
