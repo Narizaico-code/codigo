@@ -47,12 +47,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button id="button" fx:id="btnSiguiente" layoutX="86.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="&gt;&gt;&gt;" GridPane.columnIndex="1">
+                  <Button id="button" fx:id="btnSiguiente" layoutX="86.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnSiguienteAccion" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="&gt;&gt;&gt;" GridPane.columnIndex="1">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button" fx:id="btnNuevo" layoutX="363.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="Nuevo" GridPane.columnIndex="3">
+                  <Button id="button" fx:id="btnNuevo" layoutX="363.0" layoutY="10.0" mnemonicParsing="false" onAction="#cambiarGuardarPersona" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="Nuevo" GridPane.columnIndex="3">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
@@ -62,12 +62,12 @@
                         <Font name="Courier New Italic" size="16.0" />
                      </font>
                   </TextField>
-                  <Button id="button" fx:id="btnAnterior" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="&lt;&lt;&lt;">
+                  <Button id="button" fx:id="btnAnterior" mnemonicParsing="false" onAction="#btnAnteriorAccion" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="&lt;&lt;&lt;">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button" fx:id="btnEditar" layoutX="917.0" layoutY="12.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="Editar" GridPane.columnIndex="4">
+                  <Button id="button" fx:id="btnEditar" layoutX="917.0" layoutY="12.0" mnemonicParsing="false" onAction="#cambiarEdicionPersona" prefHeight="40.0" prefWidth="125.0" styleClass="boton" text="Editar" GridPane.columnIndex="4">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
@@ -88,17 +88,17 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button id="button" fx:id="btnCargarImagen" layoutX="210.0" layoutY="357.0" mnemonicParsing="false" onAction="#onCargarImagen" prefHeight="40.0" prefWidth="140.0" text="Cargar imagen" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                  <Button id="button" fx:id="btnCargarImagen" layoutX="210.0" layoutY="357.0" mnemonicParsing="false" onAction="#onCargarImagen" prefHeight="40.0" prefWidth="140.0" styleClass="botones_extra" text="Cargar imagen" GridPane.columnSpan="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button" fx:id="btnBuscar" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Buscar" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button id="button" fx:id="btnBuscar" mnemonicParsing="false" onAction="#buscarMetodoPersona" prefHeight="40.0" prefWidth="184.0" styleClass="botones_extra" text="Buscar" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="button" fx:id="btnEliminar" layoutX="110.0" layoutY="211.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Eliminar" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button id="button" fx:id="btnEliminar" layoutX="110.0" layoutY="211.0" mnemonicParsing="false" onAction="#cancelarEliminarPersona" prefHeight="40.0" prefWidth="100.0" styleClass="botones_extra" text="Eliminar" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
@@ -170,7 +170,7 @@
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="ivEstudiante" fitHeight="154.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+                  <ImageView fx:id="ivFoto" fitHeight="154.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
                </children>
             </GridPane>
          </center>

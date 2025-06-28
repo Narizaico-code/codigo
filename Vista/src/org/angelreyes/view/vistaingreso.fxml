@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -12,14 +13,9 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="990.0" prefWidth="1760.0" styleClass="anchorpane" stylesheets="@../resource/vistaingreso.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.ingresoController">
+<AnchorPane id="AnchorPane" prefHeight="990.0" prefWidth="1760.0" styleClass="anchorpane" stylesheets="@../resource/vistaingreso.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.IngresoController">
    <children>
       <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#626d86" layoutX="59.0" layoutY="-58.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="28.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="27.0">
-         <image>
-            <Image url="@../images/Kinal.png" />
-         </image>
-      </ImageView>
       <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#5673b2f5" layoutX="702.0" layoutY="567.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="QuadCurve" AnchorPane.bottomAnchor="0.0" />
       <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#5572b4" layoutX="581.0" layoutY="40.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.rightAnchor="522.0016326904297" AnchorPane.topAnchor="-2.198719024658203" />
       <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="DODGERBLUE" layoutX="160.0" layoutY="507.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.topAnchor="376.94049072265625" />
@@ -90,16 +86,25 @@
                   </Label>
                </children>
             </GridPane>
-            <ImageView fitHeight="364.0" fitWidth="311.0" layoutX="46.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ivFoto" fitHeight="364.0" fitWidth="311.0" layoutX="46.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
             <MenuButton fx:id="miCarnet" layoutX="1197.0" layoutY="116.0" mnemonicParsing="false" text="Carnet">
               <items>
                 <MenuItem fx:id="miUno" mnemonicParsing="false" text="2024435" />
-                <MenuItem fx:id="miDos" mnemonicParsing="false" text="2024060" />
+                <MenuItem fx:id="miDos" mnemonicParsing="false" text="2024436" />
                   <MenuItem fx:id="miTres" mnemonicParsing="false" text="2024445" />
                   <MenuItem fx:id="miCuatro" mnemonicParsing="false" text="2021875" />
               </items>
             </MenuButton>
          </children>
       </AnchorPane>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" styleClass="boton-transparente">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Kinal.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

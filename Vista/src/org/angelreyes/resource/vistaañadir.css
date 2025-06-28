@@ -51,3 +51,13 @@
 .botones_extra:pressed{
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
 }
+.table-view{
+    -fx-background-color:#a4cff2;
+    -fx-background-radius: 16px; /* Un poco menos redondeado */
+    -fx-padding: 7px 14px; /* Padding ajustado */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 2);
+}
+.table-view:hover{
+    -fx-background-color:#91bee3;
+    -fx-cursor:hand;
+}

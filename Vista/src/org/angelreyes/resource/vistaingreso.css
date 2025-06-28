@@ -22,3 +22,13 @@
 .anchor-pane{
     -fx-background-color: linear-gradient(to right, lightblue, white);
 }
+.boton-transparente{
+    -fx-background-color:#626d86;
+}
+.boton-transparente:hover{
+    -fx-cursor: hand;
+}
+.boton-transparente:pressed{
+    -fx-background-color:#6699ff;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,5.2), 10, 0.0, 0, 1);
+}

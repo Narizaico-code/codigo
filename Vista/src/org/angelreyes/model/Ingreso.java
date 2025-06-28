@@ -1,6 +1,6 @@
 package org.angelreyes.model;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -8,19 +8,12 @@ import java.time.LocalTime;
  */
 public class Ingreso {
 
-    private int idAsitencia, idPersona;
-    private LocalTime horaEntrada, horaSalida;
+    private int idAsistencia, idPersona;
+    private LocalDateTime horaEntrada, horaSalida;
     private String nombrePersona, apellidoPersona, carnetPersona;
+    private byte[] fotoPersona;
 
-    public Ingreso(int idAsitencia, int idPersona, LocalTime horaEntrada, LocalTime horaSalida) {
-        this.idAsitencia = idAsitencia;
-        this.idPersona = idPersona;
-        this.horaEntrada = horaEntrada;
-    }
-
-    public Ingreso(int idAsitencia, int idPersona, LocalTime horaEntrada, LocalTime horaSalida, String nombrePersona, String apellidoPersona, String carnetPersona) {
-        this.idAsitencia = idAsitencia;
-        this.idPersona = idPersona;
+    public Ingreso(LocalDateTime horaEntrada, LocalDateTime horaSalida, String nombrePersona, String apellidoPersona, String carnetPersona) {
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
         this.nombrePersona = nombrePersona;
@@ -28,12 +21,23 @@ public class Ingreso {
         this.carnetPersona = carnetPersona;
     }
 
+    public Ingreso(int idAsitencia, int idPersona,LocalDateTime horaEntrada, LocalDateTime horaSalida, String nombrePersona, String apellidoPersona, String carnetPersona, byte[] fotoPersona) {
+        this.idAsistencia = idAsitencia;
+        this.idPersona = idPersona;
+        this.horaEntrada = horaEntrada;
+        this.horaSalida = horaSalida;
+        this.nombrePersona = nombrePersona;
+        this.apellidoPersona = apellidoPersona;
+        this.carnetPersona = carnetPersona;
+        this.fotoPersona = fotoPersona;
+    }
+
     public int getIdAsitencia() {
-        return idAsitencia;
+        return idAsistencia;
     }
 
     public void setIdAsitencia(int idAsitencia) {
-        this.idAsitencia = idAsitencia;
+        this.idAsistencia = idAsitencia;
     }
 
     public int getIdPersona() {
@@ -68,20 +72,28 @@ public class Ingreso {
         this.carnetPersona = carnetPersona;
     }
 
-    public LocalTime getHoraEntrada() {
+    public LocalDateTime getHoraEntrada() {
         return horaEntrada;
     }
 
-    public void setHoraEntrada(LocalTime horaEntrada) {
+    public void setHoraEntrada(LocalDateTime horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
 
-    public LocalTime getHoraSalida() {
+    public LocalDateTime getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(LocalTime horaSalida) {
+    public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
+    }
+
+    public byte[] getFotoPersona() {
+        return fotoPersona;
+    }
+
+    public void setFotoPersona(byte[] fotoPersona) {
+        this.fotoPersona = fotoPersona;
     }
 
 }

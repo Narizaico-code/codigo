@@ -14,26 +14,29 @@ import org.angelreyes.system.Main;
  * @author Angel Geovanny
  */
 public class MenuController implements Initializable {
+
+    public void setPrincipal(Main principal) {
+        this.principal = principal;
+    }
     private Main principal;
-    
-    @FXML private Button btnIngreso, btnAñadir;
+
+    @FXML
+    private Button btnIngreso, btnAñadir;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    public void setPrincipal(Main principal) {
-        this.principal = principal;
+
     }
-    
+
     @FXML
     public void clickManejadorEventos(ActionEvent evento) {
-        if (evento.getSource() == btnIngreso){
+        if (evento.getSource() == btnIngreso) {
             principal.getIngresoView();
-        }else if(evento.getSource() == btnAñadir){
+        } else if (evento.getSource() == btnAñadir) {
             principal.getAñadirView();
         }
-}
+    }
 }

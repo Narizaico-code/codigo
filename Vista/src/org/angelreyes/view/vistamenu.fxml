@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="anchor-pane" stylesheets="@../resource/vistamenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="anchor-pane" stylesheets="@../resource/vistamenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.MenuController">
    <children>
       <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#626d86" layoutX="62.0" layoutY="-49.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="38.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +46,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnIngreso" mnemonicParsing="false" prefHeight="50.0" prefWidth="129.0" styleClass="boton" text="Asistencia" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                  <Button fx:id="btnIngreso" mnemonicParsing="false" onAction="#clickManejadorEventos" prefHeight="50.0" prefWidth="129.0" styleClass="boton" text="Asistencia" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <font>
                         <Font name="Courier New" size="16.0" />
                      </font>
@@ -68,7 +68,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btnAñadir" mnemonicParsing="false" prefHeight="50.0" prefWidth="129.0" styleClass="boton" text="Añadir" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                  <Button fx:id="btnAñadir" mnemonicParsing="false" onAction="#clickManejadorEventos" prefHeight="50.0" prefWidth="129.0" styleClass="boton" text="Añadir" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <font>
                         <Font name="Courier New" size="16.0" />
                      </font>

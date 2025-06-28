@@ -2,6 +2,7 @@ package org.angelreyes.system;
 
 import java.io.InputStream;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
