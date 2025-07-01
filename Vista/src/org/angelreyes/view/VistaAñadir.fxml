@@ -108,11 +108,7 @@
                         <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbId" layoutX="10.0" layoutY="74.0" prefHeight="17.0" prefWidth="54.0" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="Courier New" size="16.0" />
-                     </font>
-                  </Label>
+                  <TextField fx:id="txtIdPersona" promptText="ID PERSONA" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </right>
