@@ -21,14 +21,17 @@ public class MenuController implements Initializable {
     private Main principal;
 
     @FXML
-    private Button btnIngreso, btnAñadir;
+    private Button btnIngreso, btnAñadir, btnAbrirWeb;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        btnAbrirWeb.setOnAction(evt -> {
+            // Abre la URL en el navegador por defecto
+            principal.getAppHostServices().showDocument("https://www.kinal.org.gt/");
+        });
     }
 
     @FXML

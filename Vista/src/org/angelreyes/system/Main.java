@@ -3,10 +3,12 @@ package org.angelreyes.system;
 import java.io.InputStream;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.angelreyes.controller.AñadirController;
 import org.angelreyes.controller.IngresoController;
@@ -17,7 +19,7 @@ import org.angelreyes.controller.MenuController;
  * @author Angel Geovanny
  */
 public class Main extends Application {
-
+    private static HostServices hostServices;
     private static String URL = "/org/angelreyes/view/";
     private Stage escenarioPrincipal;
     private Scene siguienteEscena;
@@ -28,7 +30,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        hostServices = getHostServices();
         this.escenarioPrincipal = stage;
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/org/angelreyes/images/logo.png")));
+
+        stage.setTitle("Kinal");
         getMenuPrincipalView();
         stage.show();
     }
@@ -47,6 +53,10 @@ public class Main extends Application {
 
         interfazDeCambio = cargadorFXML.getController();
         return interfazDeCambio;
+    }
+    
+    public static HostServices getAppHostServices() {
+        return hostServices;
     }
 
     public void getMenuPrincipalView() {
