@@ -21,7 +21,8 @@ create table Asistencia (
     constraint  fk_Asistencia_Persona foreign key (idPersona)
 		references Persona(idPersona)
 );
-
+call sp_listarPersona();
+drop procedure if exists sp_agregarPersona;
 delimiter //
 	create procedure sp_agregarPersona(
     in p_idPersona int,
@@ -36,8 +37,8 @@ delimiter //
 		end
 //delimiter ;
 
+drop procedure if exists sp_ActualizarPersona;
 delimiter //
-
 create procedure sp_ActualizarPersona(
     in p_idPersona int,
     in p_nombrePersona varchar(255),
@@ -49,7 +50,6 @@ create procedure sp_ActualizarPersona(
 begin
     update Persona P
     set 
-		P.idPersona = p_idPersona,
         P.nombrePersona = p_nombrePersona,
         P.apellidoPersona = p_apellidoPersona,
         P.correoPersona = p_correoPersona,
@@ -116,8 +116,7 @@ delimiter //
 			  and horaSalida is null
 			order by horaEntrada desc
 			limit 1;
-		end
-//
+		end//
         delimiter ;
 
 call sp_agregarAsistencia(1,0007267027);
@@ -169,10 +168,12 @@ begin
     where idAsistencia = p_idAsistencia;
 end //
 delimiter ;
+drop procedure if exists sp_buscarPersonaPorId;
 delimiter //
 create procedure sp_buscarPersonaPorId(in p_idPersona int)
 begin
     select
+		idPersona,
 		nombrePersona, apellidoPersona,
         correoPersona, carnetPersona, fotoPersona
     from Persona
@@ -181,3 +182,12 @@ begin
 end//
 delimiter ;
 call sp_listarAsistencia();
+delimiter //
+create procedure sp_listarAsistenciaPorPersona(in p_idPersona int)
+	begin
+		select * from Asistencia
+		where idPersona = p_idPersona
+		order by horaEntrada desc
+		limit 1;
+	end //
+delimiter ;

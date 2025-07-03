@@ -321,6 +321,9 @@ public class AñadirController implements Initializable {
         txtBuscar.setDisable(activo);
         btnAnterior.setDisable(activo);
         btnSiguiente.setDisable(activo);
+        if(estado == EstadoFormulario.EDITAR){
+            txtIdPersona.setDisable(activo);
+        }
 
         btnNuevo.setText(activo ? "Guardar" : "Nuevo");
         btnEliminar.setText(activo ? "Cancelar" : "Eliminar");

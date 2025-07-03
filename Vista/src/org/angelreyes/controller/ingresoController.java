@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.ResourceBundle;
@@ -37,11 +38,14 @@ import org.angelreyes.system.Main;
 
 public class IngresoController implements Initializable {
 
-    @FXML private TextField txtLeer;
-    @FXML private TableView<Ingreso> tablaIngresos;
-    @FXML private Button btnRegresar;
-    @FXML private Label lbNombre, lbApellido, lbCarnet, lbEntrada, lbSalida, lbIdPersona, lbIdAsistencia;
-    @FXML private ImageView ivFoto;
+    @FXML
+    private TextField txtLeer;
+    @FXML
+    private Button btnRegresar;
+    @FXML
+    private Label lbNombre, lbApellido, lbCarnet, lbEntrada, lbSalida, lbIdPersona, lbIdAsistencia;
+    @FXML
+    private ImageView ivFoto;
 
     private Main principal;
     private ObservableList<Ingreso> listarIngresos = FXCollections.observableArrayList();
@@ -52,145 +56,166 @@ public class IngresoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // 1) Pedir foco al campo de lectura
         Platform.runLater(() -> txtLeer.requestFocus());
 
-        // 2) Al pulsar Enter en txtLeer, llamamos a procesarCarnet()
         txtLeer.setOnAction(this::procesarCarnet);
-
-        // 3) Cargamos la tabla al arrancar
-        cargarTablaIngresos();
     }
 
+    private static final DateTimeFormatter TIME_ONLY
+            = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+    @FXML
     private void procesarCarnet(ActionEvent evento) {
-        int id = Integer.parseInt(txtLeer.getText().trim());
-        if (txtLeer.getText().trim().isEmpty()) {
+        String texto = txtLeer.getText().trim();
+        if (texto.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor ingresa un carnet.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        Persona persona = buscarPersonaPorId(id);
-        if (persona == null) {
-            limpiarFormulario();
-            JOptionPane.showMessageDialog(null, "No se encontró persona con id de persona " + id, "Error", JOptionPane.ERROR_MESSAGE);
+        int idPersona;
+        try {
+            idPersona = Integer.parseInt(texto);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "El carnet debe ser numérico.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Mostrar datos básicos
+        // 1) Busca datos persona
+        Persona persona = buscarPersonaPorId(idPersona);
+        if (persona == null) {
+            limpiarFormulario();
+            JOptionPane.showMessageDialog(null,
+                    "No se encontró persona con id " + idPersona,
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         lbNombre.setText(persona.getNombrePersona());
         lbApellido.setText(persona.getApellidoPersona());
         lbCarnet.setText(persona.getCarnetPersona());
-        ivFoto.setImage(new Image(new ByteArrayInputStream(persona.getFotoPersona())));
+        ivFoto.setImage(new Image(
+                new ByteArrayInputStream(persona.getFotoPersona())
+        ));
 
-        // Procesar entrada/salida
         LocalDateTime ahora = LocalDateTime.now();
 
-        // Buscar última asistencia de esta persona en la lista cargada
-        Ingreso ultima = listarIngresos.stream()
-            .filter(i -> i.getIdPersona() == persona.getIdPersona())
-            .max((a, b) -> a.getHoraEntrada().compareTo(b.getHoraEntrada()))
-            .orElse(null);
+        // 2) Recupera la última asistencia de la BD
+        Ingreso ultima = obtenerUltimoIngreso(idPersona);
 
         try (Connection conn = Conexion.getInstancia().getConexion()) {
             if (ultima == null || ultima.getHoraSalida() != null) {
-                // No hay registro pendiente → marcar entrada
-                if (ultima != null && Duration.between(ultima.getHoraEntrada(), ahora).toMinutes() < 5) {
+                // No hay entrada pendiente
+                if (ultima != null
+                        && Duration.between(ultima.getHoraEntrada(), ahora).toMinutes() < 5) {
                     JOptionPane.showMessageDialog(null,
-                        "Ya registraste entrada hace menos de 5 minutos.\nDebes esperar para volver a marcar.",
-                        "Aviso", JOptionPane.WARNING_MESSAGE);
+                            "Ya registraste entrada hace menos de 5 minutos.\nDebes esperar para volver a marcar.",
+                            "Aviso", JOptionPane.WARNING_MESSAGE);
                 } else {
+                    // Inserta nueva entrada
                     int nuevoId = generarNuevoIdAsistencia(conn);
                     try (CallableStatement cs = conn.prepareCall("{call sp_agregarAsistencia(?,?)}")) {
                         cs.setInt(1, nuevoId);
-                        cs.setInt(2, persona.getIdPersona());
+                        cs.setInt(2, idPersona);
                         cs.executeUpdate();
                     }
-                    lbEntrada.setText(ahora.toString());
+                    lbEntrada.setText(ahora.format(TIME_ONLY));
                     lbSalida.setText("");
                 }
             } else {
-                // Hay un registro abierto → marcar salida
-                long minutosPendientes = Duration.between(ultima.getHoraEntrada(), ahora).toMinutes();
-                if (minutosPendientes < 5) {
+                long minutos = Duration.between(ultima.getHoraEntrada(), ahora).toMinutes();
+                if (minutos < 5) {
                     JOptionPane.showMessageDialog(null,
-                        "No han pasado 5 minutos desde la entrada.\nNo puedes marcar la salida aún.",
-                        "Aviso", JOptionPane.WARNING_MESSAGE);
+                            "No han pasado 5 minutos desde la entrada.\nNo puedes marcar la salida aún.",
+                            "Aviso", JOptionPane.WARNING_MESSAGE);
                 } else {
+                    // Marca salida
                     try (CallableStatement cs = conn.prepareCall("{call sp_marcarSalida(?)}")) {
-                        cs.setInt(1, persona.getIdPersona());
+                        cs.setInt(1, idPersona);
                         cs.executeUpdate();
                     }
-                    lbSalida.setText(ahora.toString());
+                    lbSalida.setText(ahora.format(TIME_ONLY));
                 }
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,
-                "Error al procesar asistencia: " + ex.getMessage(),
-                "Error BD", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+                    "Error al procesar asistencia: " + ex.getMessage(),
+                    "Error BD", JOptionPane.ERROR_MESSAGE);
         }
 
-        // Refrescar tabla y limpiar el campo de lectura
-        cargarTablaIngresos();
         txtLeer.clear();
         txtLeer.requestFocus();
     }
 
-    public void cargarTablaIngresos() {
-        listarIngresos = FXCollections.observableArrayList(cargarDatos());
-        tablaIngresos.setItems(listarIngresos);
-        if (!listarIngresos.isEmpty()) {
-            tablaIngresos.getSelectionModel().selectFirst();
-            cargarIngresoFormulario(listarIngresos.get(0));
-        } else {
-            limpiarFormulario();
+    private Ingreso obtenerUltimoIngreso(int idPersona) {
+        String sql
+                = "{call sp_listarAsistenciaPorPersona(?)}";
+        try (Connection conexion = Conexion.getInstancia().getConexion(); CallableStatement enunciado = conexion.prepareCall(sql)) {
+            enunciado.setInt(1, idPersona);
+            try (ResultSet resultado = enunciado.executeQuery()) {
+                if (resultado.next()) {
+                    LocalDateTime entrada = resultado.getTimestamp("horaEntrada")
+                            .toLocalDateTime();
+                    java.sql.Timestamp tsSalida = resultado.getTimestamp("horaSalida");
+                    LocalDateTime salida = tsSalida != null
+                            ? tsSalida.toLocalDateTime()
+                            : null;
+                    return new Ingreso(
+                            resultado.getInt("idAsistencia"),
+                            idPersona,
+                            entrada,
+                            salida,
+                            null,
+                            null, null, null
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     private ArrayList<Ingreso> cargarDatos() {
         ArrayList<Ingreso> ingresos = new ArrayList<>();
         String sql = "{call sp_listarAsistencia()}";
-        try (Connection conn = Conexion.getInstancia().getConexion();
-             CallableStatement cs = conn.prepareCall(sql);
-             ResultSet resultado = cs.executeQuery()) {
+
+        try (
+                Connection conexion = Conexion.getInstancia().getConexion(); CallableStatement enunciado = conexion.prepareCall(sql); ResultSet resultado = enunciado.executeQuery()) {
 
             while (resultado.next()) {
                 ingresos.add(new Ingreso(
-                    resultado.getInt(1),
-                    resultado.getInt(2),
-                    resultado.getTimestamp(3).toLocalDateTime(),
-                    resultado.getTimestamp(4) != null 
+                        resultado.getInt(1),
+                        resultado.getInt(2),
+                        resultado.getTimestamp(3).toLocalDateTime(),
+                        resultado.getTimestamp(4) != null
                         ? resultado.getTimestamp(4).toLocalDateTime()
                         : null,
-                    resultado.getString(5),
-                    resultado.getString(6),
-                    resultado.getString(7),
-                    resultado.getBytes(8)
+                        resultado.getString(5),
+                        resultado.getString(6),
+                        resultado.getString(7),
+                        resultado.getBytes(8)
                 ));
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                "Error al cargar asistencia: " + e.getMessage(),
-                "Error de Carga", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+                    "Error al cargar asistencia: " + e.getMessage(),
+                    "Error de Carga", JOptionPane.ERROR_MESSAGE);
         }
+
         return ingresos;
     }
 
     private Persona buscarPersonaPorId(int id) {
         String sql = "{call sp_buscarPersonaPorId(?)}";
-        try (Connection conexion = Conexion.getInstancia().getConexion();
-             CallableStatement enunciado = conexion.prepareCall(sql)) {
-            enunciado.setInt(1, id);
+        try (Connection conexion = Conexion.getInstancia().getConexion(); CallableStatement enunciado = conexion.prepareCall(sql)) {
+            enunciado.setString(1, String.valueOf(id));
             try (ResultSet resultado = enunciado.executeQuery()) {
                 if (resultado.next()) {
                     return new Persona(
-                        resultado.getInt("idPersona"),
-                        resultado.getString("nombrePersona"),
-                        resultado.getString("apellidoPersona"),
-                        resultado.getString("correoPersona"),
-                        resultado.getString("carnetPersona"),
-                        resultado.getBytes("fotoPersona")
+                            resultado.getInt("idPersona"),
+                            resultado.getString("nombrePersona"),
+                            resultado.getString("apellidoPersona"),
+                            resultado.getString("correoPersona"),
+                            resultado.getString("carnetPersona"),
+                            resultado.getBytes("fotoPersona")
                     );
                 }
             }
@@ -201,10 +226,10 @@ public class IngresoController implements Initializable {
     }
 
     private int generarNuevoIdAsistencia(Connection conexion) throws SQLException {
-        try (Statement stmt = conexion.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT IFNULL(MAX(idAsistencia),0)+1 FROM Asistencia")) {
-            rs.next();
-            return rs.getInt(1);
+        try (Statement enunciado = conexion.createStatement(); ResultSet resultado = enunciado.executeQuery(
+                "SELECT IFNULL(MAX(idAsistencia),0)+1 FROM Asistencia")) {
+            resultado.next();
+            return resultado.getInt(1);
         }
     }
 
@@ -215,13 +240,13 @@ public class IngresoController implements Initializable {
             lbCarnet.setText(ingresoSeleccionado.getCarnetPersona());
             lbEntrada.setText(ingresoSeleccionado.getHoraEntrada().toString());
             lbSalida.setText(
-                ingresoSeleccionado.getHoraSalida() != null
+                    ingresoSeleccionado.getHoraSalida() != null
                     ? ingresoSeleccionado.getHoraSalida().toString()
                     : ""
             );
             ivFoto.setImage(new Image(
-                new ByteArrayInputStream(Base64.getDecoder()
-                    .decode(ingresoSeleccionado.getFotoPersona()))
+                    new ByteArrayInputStream(Base64.getDecoder()
+                            .decode(ingresoSeleccionado.getFotoPersona()))
             ));
         }
     }
