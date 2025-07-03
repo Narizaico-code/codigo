@@ -79,7 +79,6 @@ public class IngresoController implements Initializable {
             return;
         }
 
-        // 1) Busca datos persona
         Persona persona = buscarPersonaPorId(idPersona);
         if (persona == null) {
             limpiarFormulario();
@@ -97,24 +96,21 @@ public class IngresoController implements Initializable {
 
         LocalDateTime ahora = LocalDateTime.now();
 
-        // 2) Recupera la última asistencia de la BD
         Ingreso ultima = obtenerUltimoIngreso(idPersona);
 
-        try (Connection conn = Conexion.getInstancia().getConexion()) {
+        try (Connection conexion = Conexion.getInstancia().getConexion()) {
             if (ultima == null || ultima.getHoraSalida() != null) {
-                // No hay entrada pendiente
                 if (ultima != null
                         && Duration.between(ultima.getHoraEntrada(), ahora).toMinutes() < 5) {
                     JOptionPane.showMessageDialog(null,
                             "Ya registraste entrada hace menos de 5 minutos.\nDebes esperar para volver a marcar.",
                             "Aviso", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    // Inserta nueva entrada
-                    int nuevoId = generarNuevoIdAsistencia(conn);
-                    try (CallableStatement cs = conn.prepareCall("{call sp_agregarAsistencia(?,?)}")) {
-                        cs.setInt(1, nuevoId);
-                        cs.setInt(2, idPersona);
-                        cs.executeUpdate();
+                    int nuevoId = generarNuevoIdAsistencia(conexion);
+                    try (CallableStatement enunciado = conexion.prepareCall("{call sp_agregarAsistencia(?,?)}")) {
+                        enunciado.setInt(1, nuevoId);
+                        enunciado.setInt(2, idPersona);
+                        enunciado.executeUpdate();
                     }
                     lbEntrada.setText(ahora.format(TIME_ONLY));
                     lbSalida.setText("");
@@ -125,12 +121,13 @@ public class IngresoController implements Initializable {
                     JOptionPane.showMessageDialog(null,
                             "No han pasado 5 minutos desde la entrada.\nNo puedes marcar la salida aún.",
                             "Aviso", JOptionPane.WARNING_MESSAGE);
+                    lbEntrada.setText(ultima.getHoraEntrada().format(TIME_ONLY));
                 } else {
-                    // Marca salida
-                    try (CallableStatement cs = conn.prepareCall("{call sp_marcarSalida(?)}")) {
-                        cs.setInt(1, idPersona);
-                        cs.executeUpdate();
+                    try (CallableStatement enunciado = conexion.prepareCall("{call sp_marcarSalida(?)}")) {
+                        enunciado.setInt(1, idPersona);
+                        enunciado.executeUpdate();
                     }
+                    lbEntrada.setText(ultima.getHoraEntrada().format(TIME_ONLY));
                     lbSalida.setText(ahora.format(TIME_ONLY));
                 }
             }

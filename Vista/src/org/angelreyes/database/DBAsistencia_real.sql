@@ -21,7 +21,7 @@ create table Asistencia (
     constraint  fk_Asistencia_Persona foreign key (idPersona)
 		references Persona(idPersona)
 );
-call sp_listarPersona();
+/*call sp_listarPersona();*/
 drop procedure if exists sp_agregarPersona;
 delimiter //
 	create procedure sp_agregarPersona(
