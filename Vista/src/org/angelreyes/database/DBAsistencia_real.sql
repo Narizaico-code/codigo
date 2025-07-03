@@ -3,13 +3,17 @@ create database DBAsistencia;
 use DBAsistencia;
 
 create table Persona (
-	idPersona int not null,
+    idPersona int primary key,
+    carnetPersona varchar(64),
     nombrePersona varchar(255),
     apellidoPersona varchar(255),
-    correoPersona varchar(255),
-    carnetPersona varchar(64),
-    fotoPersona varchar(128),
-	constraint pk_Persona primary key (idPersona)
+    grado varchar(50),
+    seccion varchar(50),
+    grupoAcademico varchar(100),
+    jornada varchar(50),
+    carrera varchar(100),
+    tarjeta int,
+    fotoPersona varchar(128)
 );
 
 create table Asistencia (
@@ -24,40 +28,69 @@ create table Asistencia (
 /*call sp_listarPersona();*/
 drop procedure if exists sp_agregarPersona;
 delimiter //
-	create procedure sp_agregarPersona(
+
+create procedure sp_agregarPersona(
     in p_idPersona int,
+    in p_carnet varchar(64),
     in p_nombre varchar(255),
     in p_apellido varchar(255),
-    in p_correo varchar(255),
-    in p_carnet varchar(64),
-    in p_imagen varchar(128))
-		begin
-			insert into Persona (idPersona,nombrePersona, apellidoPersona, correoPersona, carnetPersona, fotoPersona)
-				values (p_idPersona,p_nombre, p_apellido, p_correo, p_carnet, p_imagen);
-		end
-//delimiter ;
+    in p_grado varchar(50),
+    in p_seccion varchar(50),
+    in p_grupoAcademico varchar(100),
+    in p_jornada varchar(50),
+    in p_carrera varchar(100),
+    in p_tarjeta int,
+    in p_foto varchar(128)
+)
+begin
+    insert into Persona (
+        idPersona, carnetPersona, nombrePersona, apellidoPersona,
+        grado, seccion, grupoAcademico, jornada, carrera, tarjeta, fotoPersona
+    )
+    values (
+        p_idPersona, p_carnet, p_nombre, p_apellido,
+        p_grado, p_seccion, p_grupoAcademico, p_jornada,
+        p_carrera, p_tarjeta, p_foto
+    );
+end //
+
+delimiter ;
+
 
 drop procedure if exists sp_ActualizarPersona;
 delimiter //
+
 create procedure sp_ActualizarPersona(
     in p_idPersona int,
+    in p_carnetPersona varchar(64),
     in p_nombrePersona varchar(255),
     in p_apellidoPersona varchar(255),
-    in p_correoPersona varchar(255),
-    in p_carnetPersona varchar(64),
+    in p_grado varchar(50),
+    in p_seccion varchar(50),
+    in p_grupoAcademico varchar(100),
+    in p_jornada varchar(50),
+    in p_carrera varchar(100),
+    in p_tarjeta int,
     in p_fotoPersona varchar(128)
 )
 begin
-    update Persona P
+    update Persona
     set 
-        P.nombrePersona = p_nombrePersona,
-        P.apellidoPersona = p_apellidoPersona,
-        P.correoPersona = p_correoPersona,
-        P.carnetPersona = p_carnetPersona,
-        P.fotoPersona = p_fotoPersona
-    where P.idPersona = p_idPersona;
+        carnetPersona = p_carnetPersona,
+        nombrePersona = p_nombrePersona,
+        apellidoPersona = p_apellidoPersona,
+        grado = p_grado,
+        seccion = p_seccion,
+        grupoAcademico = p_grupoAcademico,
+        jornada = p_jornada,
+        carrera = p_carrera,
+        tarjeta = p_tarjeta,
+        fotoPersona = p_fotoPersona
+    where idPersona = p_idPersona;
 end //
+
 delimiter ;
+
 
 DELIMITER //
 
@@ -72,7 +105,7 @@ end //
 
 DELIMITER ;
 
-call sp_agregarPersona(0007267027,'Angel Geovanny','Reyes Lopez','areyes@gmail.com','2024435','');
+call sp_agregarPersona(7267027,'2024435','Angel Geovanny','Reyes Lopez','5to','IN5CV','PE5CV','JV','Informatica',123456,'');
 /*call sp_agregarPersona('Carlos Andrés','Martínez Díaz','carlosm@gmail.com','2024436',);
 call sp_agregarPersona('Luisa Fernanda','Gómez Rivera','luisag@gmail.com','2024437',);
 call sp_agregarPersona('José Antonio','Pérez Sánchez','josep@gmail.com','2024438',);
@@ -83,20 +116,28 @@ call sp_agregarPersona('Julián Andrés','Morales López','juliana@gmail.com','2
 call sp_agregarPersona('Silvia Carolina','Ortiz Díaz','silviac@gmail.com','2024443',);
 call sp_agregarPersona('Ricardo Javier','Navas Cruz','ricardoj@gmail.com','2024444',);*/
 
+drop procedure if exists sp_listarPersona;
 delimiter //
-	create procedure sp_listarPersona()
-		begin
-			select 
-            P.idPersona, 
-            P.nombrePersona, 
-            P.apellidoPersona, 
-            P.correoPersona, 
-            P.carnetPersona,
-            P.fotoPersona
-            from Persona P;
-        end
-//delimiter ;
-call sp_listarPersona();
+
+create procedure sp_listarPersona()
+begin
+    select 
+        idPersona,
+        carnetPersona,
+        nombrePersona,
+        apellidoPersona,
+        grado,
+        seccion,
+        grupoAcademico,
+        jornada,
+        carrera,
+        tarjeta,
+        fotoPersona
+    from Persona;
+end //
+
+delimiter ;
+
 
 -- drop procedure sp_agregarasistencia;
 delimiter //
@@ -167,20 +208,31 @@ begin
     delete from Asistencia 
     where idAsistencia = p_idAsistencia;
 end //
-delimiter ;
+
+
 drop procedure if exists sp_buscarPersonaPorId;
 delimiter //
+
 create procedure sp_buscarPersonaPorId(in p_idPersona int)
 begin
     select
-		idPersona,
-		nombrePersona, apellidoPersona,
-        correoPersona, carnetPersona, fotoPersona
+        idPersona,
+        carnetPersona,
+        nombrePersona,
+        apellidoPersona,
+        grado,
+        seccion,
+        grupoAcademico,
+        jornada,
+        carrera,
+        tarjeta,
+        fotoPersona
     from Persona
-    where p_idPersona = idPersona
+    where idPersona = p_idPersona
     limit 1;
-end//
+end //
 delimiter ;
+
 call sp_listarAsistencia();
 delimiter //
 create procedure sp_listarAsistenciaPorPersona(in p_idPersona int)
@@ -191,3 +243,26 @@ create procedure sp_listarAsistenciaPorPersona(in p_idPersona int)
 		limit 1;
 	end //
 delimiter ;
+
+call sp_listarPersona();
+
+
+LOAD DATA LOCAL INFILE 'C:tarjetas.csv'
+INTO TABLE Persona
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(
+    idPersona,
+    carnetPersona,
+    nombrePersona,
+    apellidoPersona,
+    grado,
+    seccion,
+    grupoAcademico,
+    jornada,
+    carrera,
+    tarjeta,
+    fotoPersona
+);
