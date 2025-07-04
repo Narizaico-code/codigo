@@ -1,34 +1,65 @@
-/*
- * Empty Stylesheet file.
- */
-/*@font-face {
-    src: url("/org/angelreyes/resources/RobotoMono-SemiBold.ttf");
+/* vistaingreso.css */
+
+/* Styles for the main AnchorPane background */
+.anchorpane {
+    -fx-background-color: #4A638D; /* A deep blue/purple similar to the background curves */
 }
-.Label {
-    -fx-font-family: "Roboto Mono";
-}*/
-.anchorpane{
-    -fx-background-color: linear-gradient(to right, #577FDB, #53555C);
+
+/* Styles for the inner AnchorPane where the form elements are */
+.anchor-pane {
+    -fx-background-color: #FFFFFF; /* White background for the main content area */
+    -fx-background-radius: 10px; /* Slightly rounded corners for the content area */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5); /* Soft shadow for depth */
 }
-.QuadCurve {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
+
+/* General styles for Labels, including those for static text and dynamic data */
+.label {
+    -fx-text-fill: #333333; /* Dark grey for text */
 }
+
+/* Styles for the "Nombre(s):", "Apellidos:", etc. labels */
+.label-bold {
+    -fx-font-weight: bold;
+    -fx-font-size: 28px; /* Larger font size as seen in the example */
+}
+
+/* Styles for the dynamic labels like "*Nombre*", "*Apellidos*", etc. */
+.label-bold-italic {
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-font-size: 28px; /* Larger font size */
+    -fx-text-fill: #555555; /* Slightly lighter text color for italicized fields */
+}
+
+/* Styles for the TextField */
+.text-field {
+    -fx-background-color: #F0F0F0; /* Light grey background */
+    -fx-border-color: #CCCCCC; /* Light grey border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-font-size: 24px; /* Larger font size */
+    -fx-padding: 8px 10px; /* Padding inside the text field */
+}
+
+/* Style for the transparent button, specifically for the Kinal logo button */
+.boton-transparente {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Hover effect for the transparent button (optional, but good for UX) */
+.boton-transparente:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Specific styles for the CubicCurve elements if you want to control their appearance via CSS */
+/* Note: Most CubicCurve properties are set directly in FXML, but if you had many, CSS is better */
 .CubicCurve {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
+    -fx-stroke: black;
+    -fx-stroke-width: 1px;
 }
-.ellipse{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
-}
-.anchor-pane{
-    -fx-background-color: linear-gradient(to right, lightblue, white);
-}
-.boton-transparente{
-    -fx-background-color:#626d86;
-}
-.boton-transparente:hover{
-    -fx-cursor: hand;
-}
-.boton-transparente:pressed{
-    -fx-background-color:#6699ff;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,5.2), 10, 0.0, 0, 1);
+
+.QuadCurve {
+    -fx-stroke: black;
+    -fx-stroke-width: 1px;
 }

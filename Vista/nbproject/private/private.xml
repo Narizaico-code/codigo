@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/gitpv/codigo/Vista/src/org/angelreyes/database/Conexion.java</file>
-            <file>file:/C:/gitpv/codigo/Vista/src/org/angelreyes/controller/AñadirController.java</file>
-            <file>file:/C:/gitpv/codigo/Vista/src/org/angelreyes/database/DBAsistencia_real.sql</file>
-            <file>file:/C:/gitpv/codigo/Vista/src/org/angelreyes/controller/MenuController.java</file>
+            <file>file:/C:/codigo/Vista/src/org/angelreyes/resource/vistaañadir.css</file>
+            <file>file:/C:/codigo/Vista/src/org/angelreyes/controller/IngresoController.java</file>
+            <file>file:/C:/codigo/Vista/src/org/angelreyes/database/DBAsistencia_real.sql</file>
+            <file>file:/C:/codigo/Vista/src/org/angelreyes/resource/vistaingreso.css</file>
+            <file>file:/C:/codigo/Vista/src/org/angelreyes/controller/AñadirController.java</file>
         </group>
     </open-files>
 </project-private>

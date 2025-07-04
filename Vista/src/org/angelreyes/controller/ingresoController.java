@@ -93,7 +93,7 @@ public class IngresoController implements Initializable {
         lbApellido.setText(persona.getApellidoPersona());
         lbCarnet.setText(persona.getCarnetPersona());
         InputStream inputs = getClass().getResourceAsStream(persona.getFotoPersona());
-            ivFoto.setImage(new Image(inputs));
+        ivFoto.setImage(new Image(inputs));
         LocalDateTime ahora = LocalDateTime.now();
 
         Ingreso ultima = obtenerUltimoIngreso(nroTarjeta);

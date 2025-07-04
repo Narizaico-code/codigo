@@ -1,63 +1,134 @@
-/*
- * Empty Stylesheet file.
- */
-/*@font-face {
-    src: url("/org/angelreyes/resources/RobotoMono-SemiBold.ttf");
+.anchorpane {
+    -fx-background-color: #f0f2f5; /* A light, soft background to make the dark blue elements pop */
 }
-.Label {
-    -fx-font-family: "Roboto Mono";
-}*/
-.anchorpane{
-    -fx-background-color: linear-gradient(to right, #577FDB, #53555C);
-}
-.QuadCurve {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
-}
+
 .CubicCurve {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
+    -fx-fill: #13234a; /* Keep the original dark blue for the curves as they are decorative background elements */
+    -fx-stroke: #0a111f; /* A slightly darker shade of the dark blue for stroke */
 }
-.ellipse{
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
+
+.QuadCurve {
+    -fx-fill: #13234a; /* Keep consistent for all curves */
+    -fx-stroke: #0a111f;
 }
-.anchor-pane{
-    -fx-background-color: linear-gradient(to right, lightblue, white);
+
+.TableView {
+    -fx-background-color: #ffffff; /* White background for the table for readability */
+    -fx-border-color: #13234a; /* Border matching the primary dark blue */
+    -fx-border-width: 1px;
+    -fx-font-family: "Courier New";
 }
-.boton{
-    -fx-background-color:#6699ff;
+
+.TableView .column-header-background {
+    -fx-background-color: #13234a; /* Dark blue headers */
 }
-.boton-transparente{
-    -fx-background-color:#626d86;
+
+.TableView .column-header .label {
+    -fx-text-fill: #ffffff; /* White text for column headers */
+    -fx-font-weight: bold;
 }
-.boton:hover{
+
+.TableView .table-cell {
+    -fx-text-fill: #333333; /* Dark gray for cell text */
+}
+
+.TableView .table-row-cell:odd {
+    -fx-background-color: #e8eaf6; /* Light blue/gray for odd rows (subtle contrast) */
+}
+
+.TableView .table-row-cell:even {
+    -fx-background-color: #ffffff; /* White for even rows */
+}
+
+.TableView .table-row-cell:selected {
+    -fx-background-color: #e6b800; /* Golden yellow for selected rows (strong contrast and highlights selection) */
+    -fx-text-fill: #13234a; /* Dark blue text on selected rows */
+}
+
+.boton {
+    -fx-background-color: #13234a; /* Dark blue buttons */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #0a111f;
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+}
+
+.boton:hover {
+    -fx-background-color: #e6b800; /* Golden yellow on hover for interaction feedback */
+    -fx-text-fill: #13234a; /* Dark blue text on hover */
     -fx-cursor: hand;
 }
-.boton-transparente:hover{
+
+.boton:pressed {
+    -fx-background-color: #ff8c00; /* Orange on press for strong feedback */
+    -fx-text-fill: #ffffff;
+}
+
+.boton-transparente {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.boton-transparente:hover {
+    -fx-opacity: 0.8;
     -fx-cursor: hand;
 }
-.boton-transparente:pressed{
-    -fx-background-color:#6699ff;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,5.2), 10, 0.0, 0, 1);
+
+.botones_extra {
+    -fx-background-color: #ff8c00; /* Orange for extra buttons to give them prominence */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #cc6d00; /* Darker orange border */
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
 }
-.boton:pressed{
-    -fx-background-color:#6699ff;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
-}
-.botones_extra{
-    -fx-background-color:#5572b4;
-}
-.botones_extra:hover{
+
+.botones_extra:hover {
+    -fx-background-color: #e6b800; /* Golden yellow on hover */
+    -fx-text-fill: #13234a; /* Dark blue text */
     -fx-cursor: hand;
 }
-.botones_extra:pressed{
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
+
+.botones_extra:pressed {
+    -fx-background-color: #13234a; /* Dark blue on press */
+    -fx-text-fill: #ffffff;
 }
-.table-view{
-    -fx-background-color:#a4cff2;
-    -fx-background-radius: 16px; /* Un poco menos redondeado */
-    -fx-padding: 7px 14px; /* Padding ajustado */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 2);
+
+TextField {
+    -fx-background-color: #ffffff; /* White background for text fields */
+    -fx-border-color: #67789c; /* A lighter shade of blue for borders */
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-font-family: "Courier New Bold Italic";
+    -fx-text-fill: #333333; /* Dark gray text */
+    -fx-prompt-text-fill: #999999; /* Lighter gray for prompt text */
+    -fx-padding: 5px;
 }
-.table-view:hover{
-    -fx-background-color:#91bee3;
-    -fx-cursor:hand;
+
+TextField:focused {
+    -fx-border-color: #e6b800; /* Golden yellow border on focus */
+    -fx-border-width: 2px;
+}
+
+Label {
+    -fx-text-fill: #13234a; /* Dark blue for general labels */
+    -fx-font-family: "Courier New";
+    -fx-font-size: 16px;
+}
+
+/* Specific label for "ID:" that matches the golden theme for a highlight */
+#lbIdTexto {
+    -fx-text-fill: #e6b800;
+    -fx-font-weight: bold;
+}
+
+#lbIdTexto1 { /* "Tarjeta" label */
+    -fx-text-fill: #ff8c00; /* Orange for this label for distinction */
+    -fx-font-weight: bold;
 }

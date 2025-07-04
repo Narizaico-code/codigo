@@ -18,7 +18,7 @@
       <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#0f214d" layoutX="1431.0" layoutY="285.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" AnchorPane.rightAnchor="0.111572265625" />
       <AnchorPane layoutX="178.0" layoutY="151.0" prefHeight="688.0" prefWidth="1310.0" styleClass="anchor-pane" AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="151.0">
          <children>
-            <ImageView fx:id="ivFoto" fitHeight="473.0" fitWidth="388.0" layoutX="739.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ivFoto" fitHeight="473.0" fitWidth="388.0" layoutX="552.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="120.0" fitWidth="104.0" layoutX="1179.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo.png" />
@@ -88,10 +88,13 @@
          </children>
       </AnchorPane>
       <Button fx:id="btnRegresar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRegresarAccion" styleClass="boton-transparente" />
-      <ImageView fitHeight="69.0" fitWidth="213.0" layoutX="27.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Kinal.png" />
-         </image>
-      </ImageView>
+      <Button id="button" layoutX="32.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnRegresarAccion" prefHeight="61.0" prefWidth="200.0" styleClass="boton-transparente">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Kinal.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

@@ -1,34 +1,63 @@
-/*
- * Empty Stylesheet file.
- */
-.anchor-pane{
-    -fx-background-color: linear-gradient(to right, #b28956, #546182);
+/* vistamenu.css */
+
+/* Styles for the main AnchorPane background */
+.anchor-pane {
+    -fx-background-color: #FFFFFF; /* Changed to white */
 }
-.boton{
-    -fx-background-radius: 8;
-    -fx-padding: 8 16;
-    -fx-background-insets: 0,1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 2);
-    -fx-background-color: linear-gradient(to right, #ffbb99,#a6c1d7);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 0, 2);
+
+/* Styles for the Label "Menu principal" */
+.label {
+    -fx-text-fill: #333333; /* Darker text for better contrast on white */
+    -fx-font-family: "Courier New Italic"; /* As specified in FXML */
+    -fx-font-size: 64px; /* Large font size for prominence */
+    -fx-padding: 20px 0; /* Add some vertical padding around the title */
 }
-.boton:hover{
-    -fx-cursor: hand;
+
+/* Styles for regular buttons like "Asistencia" and "Añadir" */
+.boton {
+    -fx-background-color: #f7a731; /* A vibrant orange/yellow */
+    -fx-text-fill: #FFFFFF; /* White text on the button */
+    -fx-font-family: "Courier New"; /* As specified in FXML */
+    -fx-font-size: 18px; /* Slightly larger font for readability */
+    -fx-font-weight: bold; /* Make the text bold */
+    -fx-background-radius: 8px; /* Rounded corners for buttons */
+    -fx-border-radius: 8px;
+    -fx-padding: 10px 20px; /* Padding inside the button */
+    -fx-cursor: hand; /* Change cursor to a hand on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2); /* Subtle shadow */
 }
-.boton:pressed{
-    -fx-background-color:#6699ff;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,1.2), 3, 0.0, 0, 1);
+
+/* Hover effect for regular buttons */
+.boton:hover {
+    -fx-background-color: #e09628; /* Slightly darker orange on hover */
+    -fx-scale-x: 1.02; /* Slight scale effect on hover */
+    -fx-scale-y: 1.02;
 }
+
+/* Pressed effect for regular buttons */
+.boton:pressed {
+    -fx-background-color: #c98222; /* Even darker orange when pressed */
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2); /* Inner shadow for pressed effect */
+    -fx-scale-x: 0.98; /* Slight shrink when pressed */
+    -fx-scale-y: 0.98;
+}
+
+/* Style for the transparent button, specifically for the Kinal logo button */
+.boton-transparente {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand; /* Change cursor to a hand on hover */
+}
+
+/* Hover effect for the transparent button (optional, but good for UX) */
+.boton-transparente:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Styles for the CubicCurve elements. Note that fill and stroke are often set directly
+   in FXML for these, but you can override them here if consistent styling is needed. */
 .CubicCurve {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 10, 0.5, 0, 2);
-}
-.boton-transparente{
-    -fx-background-color:#626d86;
-}
-.boton-transparente:hover{
-    -fx-cursor: hand;
-}
-.boton-transparente:pressed{
-    -fx-background-color:#6699ff;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,5.2), 10, 0.0, 0, 1);
+    /* Example: -fx-fill: #b28956; */
+    /* Example: -fx-stroke: black; */
+    /* Example: -fx-stroke-width: 1px; */
 }
