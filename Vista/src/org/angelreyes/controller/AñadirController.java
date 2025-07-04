@@ -166,7 +166,11 @@ public class AñadirController implements Initializable {
         String jornada = txtJornada.getText();
         String carrera = txtCarrera.getText();
         int tarjeta = Integer.parseInt(txtTarjeta.getText());
-        String foto = Paths.get(URI.create(ivFoto.getImage().getUrl())).toString();
+        String foto = "";
+        if (ivFoto.getImage() != null && ivFoto.getImage().getUrl() != null) {
+            foto = Paths.get(URI.create(ivFoto.getImage().getUrl())).toString();
+        }
+
         if (foto.isEmpty()) {
             foto = "/org/angelreyes/images/foto1/" + txtCarnet.getText() + ".jpg";
         }
@@ -474,10 +478,6 @@ public class AñadirController implements Initializable {
         }
         if (txtCarnet.getText() == null) {
             JOptionPane.showMessageDialog(null, "Debe de llenar el campo Carnet.", "Campo Vacío", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        if (ivFoto.getImage() == null) {
-            JOptionPane.showMessageDialog(null, "Debe de llenar el campo Imagen.", "Campo Vacío", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;

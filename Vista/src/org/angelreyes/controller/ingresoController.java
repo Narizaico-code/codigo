@@ -72,22 +72,23 @@ public class IngresoController implements Initializable {
             JOptionPane.showMessageDialog(null, "Por favor ingresa un carnet.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        int idPersona;
+        int nroTarjeta;
         try {
-            idPersona = Integer.parseInt(texto);
+            nroTarjeta = Integer.parseInt(texto);
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "El carnet debe ser numérico.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        Persona persona = buscarPersonaPorId(idPersona);
+        Persona persona = buscarPersonaPorId(nroTarjeta);
         if (persona == null) {
             limpiarFormulario();
             JOptionPane.showMessageDialog(null,
-                    "No se encontró persona con id " + idPersona,
+                    "No se encontró persona con id " + nroTarjeta,
                     "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        int idPersonaPK = persona.getIdPersona();
         lbNombre.setText(persona.getNombrePersona());
         lbApellido.setText(persona.getApellidoPersona());
         lbCarnet.setText(persona.getCarnetPersona());
@@ -95,7 +96,7 @@ public class IngresoController implements Initializable {
             ivFoto.setImage(new Image(inputs));
         LocalDateTime ahora = LocalDateTime.now();
 
-        Ingreso ultima = obtenerUltimoIngreso(idPersona);
+        Ingreso ultima = obtenerUltimoIngreso(nroTarjeta);
 
         try (Connection conexion = Conexion.getInstancia().getConexion()) {
             if (ultima == null || ultima.getHoraSalida() != null) {
@@ -108,7 +109,7 @@ public class IngresoController implements Initializable {
                     int nuevoId = generarNuevoIdAsistencia(conexion);
                     try (CallableStatement enunciado = conexion.prepareCall("{call sp_agregarAsistencia(?,?)}")) {
                         enunciado.setInt(1, nuevoId);
-                        enunciado.setInt(2, idPersona);
+                        enunciado.setInt(2, idPersonaPK);
                         enunciado.executeUpdate();
                     }
                     lbEntrada.setText(ahora.format(TIME_ONLY));
@@ -123,7 +124,7 @@ public class IngresoController implements Initializable {
                     lbEntrada.setText(ultima.getHoraEntrada().format(TIME_ONLY));
                 } else {
                     try (CallableStatement enunciado = conexion.prepareCall("{call sp_marcarSalida(?)}")) {
-                        enunciado.setInt(1, idPersona);
+                        enunciado.setInt(1, idPersonaPK);
                         enunciado.executeUpdate();
                     }
                     lbEntrada.setText(ultima.getHoraEntrada().format(TIME_ONLY));
@@ -174,7 +175,8 @@ public class IngresoController implements Initializable {
         String sql = "{call sp_listarAsistencia()}";
 
         try (
-                Connection conexion = Conexion.getInstancia().getConexion(); CallableStatement enunciado = conexion.prepareCall(sql); ResultSet resultado = enunciado.executeQuery()) {
+                Connection conexion = Conexion.getInstancia().getConexion(); CallableStatement enunciado = conexion.prepareCall(sql); 
+                ResultSet resultado = enunciado.executeQuery()) {
 
             while (resultado.next()) {
                 ingresos.add(new Ingreso(

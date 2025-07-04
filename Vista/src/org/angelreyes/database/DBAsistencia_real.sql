@@ -77,16 +77,16 @@ create procedure sp_ActualizarPersona(
 begin
     update Persona
     set 
-        carnetPersona = p_carnetPersona,
-        nombrePersona = p_nombrePersona,
-        apellidoPersona = p_apellidoPersona,
+        carnetPersona = p_carnet,
+        nombrePersona = p_nombre,
+        apellidoPersona = p_apellido,
         grado = p_grado,
         seccion = p_seccion,
         grupoAcademico = p_grupoAcademico,
         jornada = p_jornada,
         carrera = p_carrera,
         tarjeta = p_tarjeta,
-        fotoPersona = p_fotoPersona
+        fotoPersona = p_foto
     where idPersona = p_idPersona;
 end //
 
