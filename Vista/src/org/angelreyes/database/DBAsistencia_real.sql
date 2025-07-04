@@ -7,6 +7,7 @@ create table Persona (
     carnetPersona varchar(64),
     nombrePersona varchar(255),
     apellidoPersona varchar(255),
+    correoPersona varchar(128),
     grado varchar(50),
     seccion varchar(50),
     grupoAcademico varchar(100),
@@ -31,9 +32,10 @@ delimiter //
 
 create procedure sp_agregarPersona(
     in p_idPersona int,
-    in p_carnet varchar(64),
     in p_nombre varchar(255),
     in p_apellido varchar(255),
+    in p_correo varchar(128),
+    in p_carnet varchar(64),
     in p_grado varchar(50),
     in p_seccion varchar(50),
     in p_grupoAcademico varchar(100),
@@ -43,13 +45,11 @@ create procedure sp_agregarPersona(
     in p_foto varchar(128)
 )
 begin
-    insert into Persona (
-        idPersona, carnetPersona, nombrePersona, apellidoPersona,
+    insert into Persona (idPersona, carnetPersona, nombrePersona, apellidoPersona,correoPersona,
         grado, seccion, grupoAcademico, jornada, carrera, tarjeta, fotoPersona
     )
-    values (
-        p_idPersona, p_carnet, p_nombre, p_apellido,
-        p_grado, p_seccion, p_grupoAcademico, p_jornada,
+    values (p_idPersona, p_carnet, p_nombre, p_apellido,p_correo,
+		p_grado, p_seccion, p_grupoAcademico, p_jornada,
         p_carrera, p_tarjeta, p_foto
     );
 end //
@@ -62,16 +62,17 @@ delimiter //
 
 create procedure sp_ActualizarPersona(
     in p_idPersona int,
-    in p_carnetPersona varchar(64),
-    in p_nombrePersona varchar(255),
-    in p_apellidoPersona varchar(255),
-    in p_grado varchar(50),
-    in p_seccion varchar(50),
+    in p_nombre      varchar(255),
+    in p_apellido    varchar(255),
+    in p_correo      varchar(128),
+    in p_carnet      varchar(64),
+    in p_grado       varchar(50),
+    in p_seccion     varchar(50),
     in p_grupoAcademico varchar(100),
-    in p_jornada varchar(50),
-    in p_carrera varchar(100),
-    in p_tarjeta int,
-    in p_fotoPersona varchar(128)
+    in p_jornada     varchar(50),
+    in p_carrera     varchar(100),
+    in p_tarjeta     int,
+    in p_foto        varchar(128)
 )
 begin
     update Persona
@@ -105,7 +106,7 @@ end //
 
 DELIMITER ;
 
-call sp_agregarPersona(7267027,'2024435','Angel Geovanny','Reyes Lopez','5to','IN5CV','PE5CV','JV','Informatica',123456,'');
+call sp_agregarPersona(12345,'Angel Geovanny','Reyes Lopez','areyes-2024435@kinal.edu.gt','2024435','5to','in5CV','PE5CV','JV','informatica',7267027,'/org/angelreyes/images/foto1/2024435.jpg');
 /*call sp_agregarPersona('Carlos Andrés','Martínez Díaz','carlosm@gmail.com','2024436',);
 call sp_agregarPersona('Luisa Fernanda','Gómez Rivera','luisag@gmail.com','2024437',);
 call sp_agregarPersona('José Antonio','Pérez Sánchez','josep@gmail.com','2024438',);
@@ -123,9 +124,10 @@ create procedure sp_listarPersona()
 begin
     select 
         idPersona,
-        carnetPersona,
         nombrePersona,
         apellidoPersona,
+        correoPersona,
+        carnetPersona,
         grado,
         seccion,
         grupoAcademico,
@@ -160,7 +162,7 @@ delimiter //
 		end//
         delimiter ;
 
-call sp_agregarAsistencia(1,0007267027);
+call sp_agregarAsistencia(1,12345);
 /*call sp_agregarAsistencia(2,1);
 call sp_agregarAsistencia(3,1);*/
 
@@ -213,13 +215,14 @@ end //
 drop procedure if exists sp_buscarPersonaPorId;
 delimiter //
 
-create procedure sp_buscarPersonaPorId(in p_idPersona int)
+create procedure sp_buscarPersonaPorId(in p_tarjeta int)
 begin
     select
         idPersona,
-        carnetPersona,
         nombrePersona,
         apellidoPersona,
+        correoPersona,
+        carnetPersona,
         grado,
         seccion,
         grupoAcademico,
@@ -228,17 +231,18 @@ begin
         tarjeta,
         fotoPersona
     from Persona
-    where idPersona = p_idPersona
+    where tarjeta = p_tarjeta
     limit 1;
 end //
 delimiter ;
 
 call sp_listarAsistencia();
 delimiter //
-create procedure sp_listarAsistenciaPorPersona(in p_idPersona int)
+create procedure sp_listarAsistenciaPorPersona(in p_tarjeta int)
 	begin
-		select * from Asistencia
-		where idPersona = p_idPersona
+		select * from Asistencia A
+        left join Persona P on A.idPersona = P.idPersona
+		where tarjeta = p_tarjeta
 		order by horaEntrada desc
 		limit 1;
 	end //
@@ -247,11 +251,11 @@ delimiter ;
 call sp_listarPersona();
 
 
-LOAD DATA LOCAL INFILE 'C:tarjetas.csv'
-INTO TABLE Persona
-FIELDS TERMINATED BY ',' 
+/*LOAD DATA LOCAL inFILE 'C:tarjetas.csv'
+intO TABLE Persona
+FIELDS TERMinATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
+LinES TERMinATED BY '\n'
 IGNORE 1 ROWS
 (
     idPersona,
@@ -266,3 +270,4 @@ IGNORE 1 ROWS
     tarjeta,
     fotoPersona
 );
+*/

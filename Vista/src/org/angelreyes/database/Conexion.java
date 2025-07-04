@@ -12,8 +12,8 @@ import java.sql.SQLException;
 public class Conexion {
     private static Conexion instancia;
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/DBAsistencia?useSSL=false";
-    private static final String USER = "quintov";
-    private static final String PASSWORD = "admin";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private Connection conexion;
 

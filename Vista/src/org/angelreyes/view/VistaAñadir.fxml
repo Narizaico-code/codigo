@@ -29,8 +29,9 @@
                 <TableColumn fx:id="colId" prefWidth="102.00001525878906" text="ID" />
                 <TableColumn fx:id="colCarnet" prefWidth="96.0" text="Carnet" />
                   <TableColumn fx:id="colNombre" prefWidth="324.0" text="Nombre" />
-                  <TableColumn fx:id="colApellido" prefWidth="397.0" text="Apellido" />
-                  <TableColumn fx:id="colCorreo" prefWidth="464.0" text="Correo" />
+                  <TableColumn fx:id="colApellido" prefWidth="247.0" text="Apellido" />
+                  <TableColumn fx:id="colCorreo" prefWidth="395.0" text="Correo" />
+                  <TableColumn fx:id="colSeccion" maxWidth="355.0" prefWidth="188.0" text="Seccion" />
               </columns>
             </TableView>
          </top>
@@ -83,16 +84,11 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="203.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="283.0" minHeight="10.0" prefHeight="155.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button id="button" fx:id="btnCargarImagen" layoutX="210.0" layoutY="357.0" mnemonicParsing="false" onAction="#onCargarImagen" prefHeight="40.0" prefWidth="140.0" styleClass="botones_extra" text="Cargar imagen" GridPane.columnSpan="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Courier New" size="12.0" />
-                     </font>
-                  </Button>
                   <Button id="button" fx:id="btnBuscar" mnemonicParsing="false" onAction="#buscarMetodoPersona" prefHeight="40.0" prefWidth="184.0" styleClass="botones_extra" text="Buscar" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Courier New" size="12.0" />
@@ -103,21 +99,35 @@
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </Button>
-                  <Label fx:id="lbIdTexto" prefHeight="17.0" prefWidth="54.0" text="Id:">
+                  <Label fx:id="lbIdTexto" prefHeight="17.0" prefWidth="54.0" text="Id:" GridPane.columnIndex="1">
                      <font>
                         <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtIdPersona" promptText="ID PERSONA" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtIdPersona" promptText="ID PERSONA" GridPane.columnIndex="2" />
+                  <TextField fx:id="txtCarrera" prefHeight="35.0" prefWidth="50.0" promptText="Carrera del estudiante" GridPane.columnSpan="2" GridPane.rowSpan="2">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="lbIdTexto1" layoutX="110.0" layoutY="102.0" prefHeight="19.0" prefWidth="99.0" text="Tarjeta" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtTarjeta" layoutX="210.0" layoutY="99.0" promptText="Tarjeta RF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </right>
          <center>
             <GridPane fx:id="gpDatos" prefHeight="440.0" prefWidth="1021.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="642.0" minWidth="10.0" prefWidth="607.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="477.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="477.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="642.0" minWidth="10.0" prefWidth="116.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="76.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="189.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="257.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="334.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -126,7 +136,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="txtNombre" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="1">
+                  <TextField fx:id="txtNombre" prefHeight="35.0" prefWidth="50.0" promptText="Nombre del estudiante*" GridPane.columnIndex="1">
                      <font>
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
@@ -166,7 +176,52 @@
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="ivFoto" fitHeight="154.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+                  <ImageView fx:id="ivFoto" fitHeight="154.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                  <Label layoutX="10.0" layoutY="44.0" prefHeight="19.0" prefWidth="95.0" text="Grado:" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtGrado" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="438.0" layoutY="44.0" prefHeight="19.0" prefWidth="157.0" text="Seccion tecnica:" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSeccion" layoutX="574.0" layoutY="36.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="407.0" layoutY="163.0" prefHeight="19.0" prefWidth="157.0" text="Academica:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtGrupoAcademico" layoutX="574.0" layoutY="155.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="407.0" layoutY="297.0" prefHeight="19.0" prefWidth="157.0" text="Jornada:" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtJornada" layoutX="100.0" layoutY="36.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Courier New Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="407.0" layoutY="163.0" prefHeight="19.0" prefWidth="157.0" text="Carrera:" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </center>

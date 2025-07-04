@@ -11,7 +11,7 @@ public class Ingreso {
     private int idAsistencia, idPersona;
     private LocalDateTime horaEntrada, horaSalida;
     private String nombrePersona, apellidoPersona, carnetPersona;
-    private byte[] fotoPersona;
+    private String fotoPersona;
 
     public Ingreso(LocalDateTime horaEntrada, LocalDateTime horaSalida, String nombrePersona, String apellidoPersona, String carnetPersona) {
         this.horaEntrada = horaEntrada;
@@ -21,7 +21,7 @@ public class Ingreso {
         this.carnetPersona = carnetPersona;
     }
 
-    public Ingreso(int idAsitencia, int idPersona,LocalDateTime horaEntrada, LocalDateTime horaSalida, String nombrePersona, String apellidoPersona, String carnetPersona, byte[] fotoPersona) {
+    public Ingreso(int idAsitencia, int idPersona,LocalDateTime horaEntrada, LocalDateTime horaSalida, String nombrePersona, String apellidoPersona, String carnetPersona, String fotoPersona) {
         this.idAsistencia = idAsitencia;
         this.idPersona = idPersona;
         this.horaEntrada = horaEntrada;
@@ -88,11 +88,11 @@ public class Ingreso {
         this.horaSalida = horaSalida;
     }
 
-    public byte[] getFotoPersona() {
+    public String getFotoPersona() {
         return fotoPersona;
     }
 
-    public void setFotoPersona(byte[] fotoPersona) {
+    public void setFotoPersona(String fotoPersona) {
         this.fotoPersona = fotoPersona;
     }
 

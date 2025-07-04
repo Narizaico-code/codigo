@@ -4,6 +4,7 @@ import java.sql.Statement;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
@@ -90,10 +91,8 @@ public class IngresoController implements Initializable {
         lbNombre.setText(persona.getNombrePersona());
         lbApellido.setText(persona.getApellidoPersona());
         lbCarnet.setText(persona.getCarnetPersona());
-        ivFoto.setImage(new Image(
-                new ByteArrayInputStream(persona.getFotoPersona())
-        ));
-
+        InputStream inputs = getClass().getResourceAsStream(persona.getFotoPersona());
+            ivFoto.setImage(new Image(inputs));
         LocalDateTime ahora = LocalDateTime.now();
 
         Ingreso ultima = obtenerUltimoIngreso(idPersona);
@@ -188,7 +187,7 @@ public class IngresoController implements Initializable {
                         resultado.getString(5),
                         resultado.getString(6),
                         resultado.getString(7),
-                        resultado.getBytes(8)
+                        resultado.getString(8)
                 ));
             }
         } catch (SQLException e) {
@@ -207,13 +206,18 @@ public class IngresoController implements Initializable {
             try (ResultSet resultado = enunciado.executeQuery()) {
                 if (resultado.next()) {
                     return new Persona(
-                            resultado.getInt("idPersona"),
-                            resultado.getString("nombrePersona"),
-                            resultado.getString("apellidoPersona"),
-                            resultado.getString("correoPersona"),
-                            resultado.getString("carnetPersona"),
-                            resultado.getBytes("fotoPersona")
-                    );
+                            resultado.getInt(1),
+                            resultado.getString(2),
+                            resultado.getString(3),
+                            resultado.getString(4),
+                            resultado.getString(5),
+                            resultado.getString(6),
+                            resultado.getString(7),
+                            resultado.getString(8),
+                            resultado.getString(9),
+                            resultado.getString(10),
+                            resultado.getInt(11),
+                            resultado.getString(12));
                 }
             }
         } catch (SQLException ex) {

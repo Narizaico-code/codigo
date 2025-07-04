@@ -4,6 +4,7 @@ package org.angelreyes.controller;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 //java.net
 import java.net.URI;
@@ -59,17 +60,17 @@ public class AñadirController implements Initializable {
     @FXML
     private GridPane gpDatos;
     @FXML
-    private TextField txtNombre, txtApellido, txtCarnet, txtCorreo, txtBuscar,txtIdPersona;
+    private TextField txtNombre, txtApellido, txtCarnet, txtCorreo, txtBuscar, txtIdPersona, txtGrado, txtSeccion, txtGrupoAcademico, txtJornada, txtCarrera, txtTarjeta;
     @FXML
     private Label lbIdTexto;
     @FXML
     private TableView tablaPersona;
     @FXML
-    private TableColumn colId, colNombre, colApellido, colCarnet, colCorreo;
+    private TableColumn colId, colSeccion, colNombre, colApellido, colCarnet, colCorreo;
     @FXML
     private ImageView ivFoto;
     @FXML
-    private Button btnCargarImagen, btnBuscar, btnAnterior, btnSiguiente, btnNuevo, btnEliminar, btnEditar;
+    private Button btnBuscar, btnAnterior, btnSiguiente, btnNuevo, btnEliminar, btnEditar;
     private ObservableList<Persona> listarPersonas = FXCollections.observableArrayList();
 
     private enum EstadoFormulario {
@@ -89,38 +90,20 @@ public class AñadirController implements Initializable {
         tablaPersona.setOnMouseClicked(eventHandler -> cargarPersonaFormulario());
     }
 
-    @FXML
-    private void onCargarImagen(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar imagen");
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg")
-        );
-        File file = fileChooser.showOpenDialog(btnCargarImagen.getScene().getWindow());
-        if (file != null) {
-            imagenSeleccionada = file;
-            Image img = new Image(file.toURI().toString());
-            ivFoto.setImage(img);
-        }
-    }
-
-    private byte[] convertirImagenABase64(File imagen) throws IOException {
-        byte[] bytes = Files.readAllBytes(imagen.toPath());
-        return bytes;
-    }
-
     private void activarCampos() {
         gpDatos.setDisable(false);
-        btnCargarImagen.setDisable(false);
         lbIdTexto.setDisable(false);
         txtIdPersona.setDisable(false);
+        txtCarrera.setDisable(false);
+        txtTarjeta.setDisable(false);
     }
 
     private void desactivarCampos() {
         gpDatos.setDisable(true);
-        btnCargarImagen.setDisable(true);
         lbIdTexto.setDisable(true);
         txtIdPersona.setDisable(true);
+        txtCarrera.setDisable(true);
+        txtTarjeta.setDisable(true);
     }
 
     public void configurarColumnas() {
@@ -129,16 +112,17 @@ public class AñadirController implements Initializable {
         colApellido.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellidoPersona"));
         colCarnet.setCellValueFactory(new PropertyValueFactory<Persona, String>("carnetPersona"));
         colCorreo.setCellValueFactory(new PropertyValueFactory<Persona, String>("correoPersona"));
+        colSeccion.setCellValueFactory(new PropertyValueFactory<Persona, String>("seccion"));
     }
 
     public void cargarTablaPersonas() {
         listarPersonas = FXCollections.observableArrayList(listarPersona());
         tablaPersona.setItems(listarPersonas);
-        if (!listarPersonas.isEmpty()) { // Only select first if list is not empty
+        if (!listarPersonas.isEmpty()) {
             tablaPersona.getSelectionModel().selectFirst();
             cargarPersonaFormulario();
         } else {
-            limpiarFormulario(); // Clear form if table is empty
+            limpiarFormulario();
         }
     }
 
@@ -150,14 +134,16 @@ public class AñadirController implements Initializable {
             txtApellido.setText(String.valueOf(personaSeleccionada.getApellidoPersona()));
             txtCarnet.setText(String.valueOf(personaSeleccionada.getCarnetPersona()));
             txtCorreo.setText(String.valueOf(personaSeleccionada.getCorreoPersona()));
-            byte[] fotoBytes = personaSeleccionada.getFotoPersona();
-            if (fotoBytes != null && fotoBytes.length > 0) {
-                ivFoto.setImage(new Image(new ByteArrayInputStream(fotoBytes)));
-            } else {
-                ivFoto.setImage(null);
-            }
+            txtCarrera.setText(String.valueOf(personaSeleccionada.getCarrera()));
+            txtGrado.setText(String.valueOf(personaSeleccionada.getGrado()));
+            txtTarjeta.setText(String.valueOf(personaSeleccionada.getTarjeta()));
+            txtSeccion.setText(String.valueOf(personaSeleccionada.getSeccion()));
+            txtGrupoAcademico.setText(String.valueOf(personaSeleccionada.getGrupoAcademico()));
+            txtJornada.setText(String.valueOf(personaSeleccionada.getJornada()));
+            InputStream inputs = getClass().getResourceAsStream(personaSeleccionada.getFotoPersona());
+            ivFoto.setImage(new Image(inputs));
         } else {
-            limpiarFormulario(); // Clear form if no selection
+            limpiarFormulario();
         }
     }
 
@@ -174,20 +160,18 @@ public class AñadirController implements Initializable {
         String apellido = txtApellido.getText();
         String correo = txtCorreo.getText();
         String carnet = txtCarnet.getText();
-
-        byte[] fotoBytes;
-        if (imagenSeleccionada == null) {
-            
-        } else {
-            try {
-                fotoBytes = convertirImagenABase64(imagenSeleccionada);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                fotoBytes = new byte[0];
-            }
+        String grado = txtGrado.getText();
+        String seccion = txtSeccion.getText();
+        String grupoAcademico = txtGrupoAcademico.getText();
+        String jornada = txtJornada.getText();
+        String carrera = txtCarrera.getText();
+        int tarjeta = Integer.parseInt(txtTarjeta.getText());
+        String foto = Paths.get(URI.create(ivFoto.getImage().getUrl())).toString();
+        if (foto.isEmpty()) {
+            foto = "/org/angelreyes/images/foto1/" + txtCarnet.getText() + ".jpg";
         }
 
-        return new Persona(idPersona, nombre, apellido, correo, carnet, fotoBytes);
+        return new Persona(idPersona, nombre, apellido, correo, carnet, grado, seccion, grupoAcademico, jornada, carrera, tarjeta, foto);
     }
 
     public ArrayList<Persona> listarPersona() {
@@ -200,7 +184,13 @@ public class AñadirController implements Initializable {
                         resultado.getString(3),
                         resultado.getString(4),
                         resultado.getString(5),
-                        resultado.getBytes(6)));
+                        resultado.getString(6),
+                        resultado.getString(7),
+                        resultado.getString(8),
+                        resultado.getString(9),
+                        resultado.getString(10),
+                        resultado.getInt(11),
+                        resultado.getString(12)));
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar personas: " + e.getMessage(), "Error de Carga", JOptionPane.ERROR_MESSAGE);
@@ -214,13 +204,19 @@ public class AñadirController implements Initializable {
             return;
         }
         Persona nuevaPersona = cargarModeloPersona();
-        try (CallableStatement enunciado = Conexion.getInstancia().getConexion().prepareCall("{call sp_agregarPersona(?,?,?,?,?,?)}")) {
+        try (CallableStatement enunciado = Conexion.getInstancia().getConexion().prepareCall("{call sp_agregarPersona(?,?,?,?,?,?,?,?,?,?,?,?)}")) {
             enunciado.setInt(1, nuevaPersona.getIdPersona());
             enunciado.setString(2, nuevaPersona.getNombrePersona());
             enunciado.setString(3, nuevaPersona.getApellidoPersona());
             enunciado.setString(4, nuevaPersona.getCorreoPersona());
             enunciado.setString(5, nuevaPersona.getCarnetPersona());
-            enunciado.setBytes(6, nuevaPersona.getFotoPersona());
+            enunciado.setString(6, nuevaPersona.getGrado());
+            enunciado.setString(7, nuevaPersona.getSeccion());
+            enunciado.setString(8, nuevaPersona.getGrupoAcademico());
+            enunciado.setString(9, nuevaPersona.getJornada());
+            enunciado.setString(10, nuevaPersona.getCarrera());
+            enunciado.setInt(11, nuevaPersona.getTarjeta());
+            enunciado.setString(12, nuevaPersona.getFotoPersona());
             int registroAgregado = enunciado.executeUpdate();
             if (registroAgregado > 0) {
                 cargarTablaPersonas();
@@ -246,13 +242,19 @@ public class AñadirController implements Initializable {
             return;
         }
 
-        try (CallableStatement enunciado = Conexion.getInstancia().getConexion().prepareCall("{call sp_actualizarPersona(?, ?, ?, ?, ?, ?)}")) {
+        try (CallableStatement enunciado = Conexion.getInstancia().getConexion().prepareCall("{call sp_actualizarPersona(?,?,?,?,?,?,?,?,?,?,?,?)}")) {
             enunciado.setInt(1, personaAActualizar.getIdPersona());
             enunciado.setString(2, personaAActualizar.getNombrePersona());
             enunciado.setString(3, personaAActualizar.getApellidoPersona());
             enunciado.setString(4, personaAActualizar.getCorreoPersona());
             enunciado.setString(5, personaAActualizar.getCarnetPersona());
-            enunciado.setBytes(6, personaAActualizar.getFotoPersona());
+            enunciado.setString(6, personaAActualizar.getGrado());
+            enunciado.setString(7, personaAActualizar.getSeccion());
+            enunciado.setString(8, personaAActualizar.getGrupoAcademico());
+            enunciado.setString(9, personaAActualizar.getJornada());
+            enunciado.setString(10, personaAActualizar.getCarrera());
+            enunciado.setInt(11, personaAActualizar.getTarjeta());
+            enunciado.setString(12, personaAActualizar.getFotoPersona());
             int rowsAffected = enunciado.executeUpdate();
             if (rowsAffected > 0) {
                 cargarTablaPersonas();
@@ -300,6 +302,12 @@ public class AñadirController implements Initializable {
         txtApellido.clear();
         txtCorreo.clear();
         txtCarnet.clear();
+        txtCarrera.clear();
+        txtSeccion.clear();
+        txtTarjeta.clear();
+        txtGrado.clear();
+        txtJornada.clear();
+        txtGrupoAcademico.clear();
         ivFoto.setImage(null);
         txtIdPersona.clear();
     }
@@ -319,7 +327,7 @@ public class AñadirController implements Initializable {
         txtBuscar.setDisable(activo);
         btnAnterior.setDisable(activo);
         btnSiguiente.setDisable(activo);
-        if(estado == EstadoFormulario.EDITAR){
+        if (estado == EstadoFormulario.EDITAR) {
             txtIdPersona.setDisable(activo);
         }
 
