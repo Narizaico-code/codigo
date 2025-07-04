@@ -6,97 +6,92 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="990.0" prefWidth="1760.0" styleClass="anchorpane" stylesheets="@../resource/vistaingreso.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.IngresoController">
    <children>
-      <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#626d86" layoutX="59.0" layoutY="-58.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
-      <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#5673b2f5" layoutX="702.0" layoutY="567.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="QuadCurve" AnchorPane.bottomAnchor="0.0" />
-      <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#5572b4" layoutX="581.0" layoutY="40.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.rightAnchor="522.0016326904297" AnchorPane.topAnchor="-2.198719024658203" />
-      <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="DODGERBLUE" layoutX="160.0" layoutY="507.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.topAnchor="376.94049072265625" />
-      <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#546182" layoutX="1431.0" layoutY="285.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" AnchorPane.rightAnchor="0.111572265625" />
-      <AnchorPane layoutX="237.0" layoutY="156.0" prefHeight="688.0" prefWidth="1310.0" styleClass="anchor-pane" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="156.0">
+      <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#0f3179" layoutX="59.0" layoutY="-58.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
+      <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#132d65f5" layoutX="702.0" layoutY="567.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="QuadCurve" AnchorPane.bottomAnchor="0.0" />
+      <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#103483" layoutX="581.0" layoutY="40.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.rightAnchor="522.0016326904297" AnchorPane.topAnchor="-2.198719024658203" />
+      <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="#12327a" layoutX="160.0" layoutY="507.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.topAnchor="376.94049072265625" />
+      <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#0f214d" layoutX="1431.0" layoutY="285.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" AnchorPane.rightAnchor="0.111572265625" />
+      <AnchorPane layoutX="178.0" layoutY="151.0" prefHeight="688.0" prefWidth="1310.0" styleClass="anchor-pane" AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="178.0" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="151.0">
          <children>
-            <GridPane layoutX="392.0" layoutY="58.0" prefHeight="594.0" prefWidth="817.0" styleClass="grid-pane">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="404.0" minWidth="10.0" prefWidth="187.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="666.0" minWidth="10.0" prefWidth="630.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER" contentDisplay="TOP" prefHeight="49.0" prefWidth="254.0" text="Nombre(s):">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font></Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="11.0" prefHeight="49.0" prefWidth="254.0" text="Apellidos:" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="62.0" prefHeight="49.0" prefWidth="254.0" text="Carnet:" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="49.0" prefWidth="254.0" text="Hora de entrada:" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="49.0" prefWidth="254.0" text="Hora de salida:" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbNombre" layoutX="10.0" layoutY="45.0" prefHeight="49.0" prefWidth="254.0" text="*Nombre*" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbApellido" layoutX="10.0" layoutY="164.0" prefHeight="49.0" prefWidth="254.0" text="*Apellidos*" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbEntrada" layoutX="10.0" layoutY="283.0" prefHeight="49.0" prefWidth="254.0" text="*Hora entrada*" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbSalida" layoutX="10.0" layoutY="402.0" prefHeight="49.0" prefWidth="254.0" text="*Hora salida*" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbCarnet" prefHeight="49.0" prefWidth="254.0" text="*Carnet*" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Roboto Mono SemiBold Italic" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </GridPane>
-            <ImageView fx:id="ivFoto" fitHeight="364.0" fitWidth="311.0" layoutX="46.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
-            <TextField fx:id="txtLeer" layoutX="14.0" layoutY="14.0" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="btnRegresar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRegresarAccion" styleClass="boton-transparente">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivFoto" fitHeight="473.0" fitWidth="388.0" layoutX="739.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="120.0" fitWidth="104.0" layoutX="1179.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Kinal.png" />
+                  <Image url="@../images/logo.png" />
                </image>
             </ImageView>
-         </graphic>
-      </Button>
+            <TextField fx:id="txtLeer" layoutX="14.0" layoutY="14.0" />
+            <Label fx:id="lbNombre" layoutX="283.0" layoutY="150.0" prefHeight="49.0" prefWidth="254.0" text="*Nombre*">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbApellido" layoutX="283.0" layoutY="218.0" prefHeight="49.0" prefWidth="254.0" text="*Apellidos*">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbCarnet" layoutX="283.0" layoutY="293.0" prefHeight="49.0" prefWidth="254.0" text="*Carnet*">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbEntrada" layoutX="283.0" layoutY="382.0" prefHeight="49.0" prefWidth="254.0" text="*Hora entrada*">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbSalida" layoutX="283.0" layoutY="476.0" prefHeight="49.0" prefWidth="254.0" text="*Hora salida*">
+               <font>
+                  <Font name="System Bold Italic" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="36.0" layoutY="143.0" prefHeight="49.0" prefWidth="254.0" text="Nombre(s):">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="47.0" layoutY="218.0" prefHeight="49.0" prefWidth="254.0" text="Apellidos:">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="64.0" layoutY="293.0" prefHeight="49.0" prefWidth="254.0" text="Carnet:">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="64.0" layoutY="357.0" prefHeight="49.0" prefWidth="254.0" text="Hora de ">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="64.0" layoutY="397.0" prefHeight="49.0" prefWidth="254.0" text="Entrada:">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="72.0" layoutY="466.0" prefHeight="49.0" prefWidth="254.0" text="Hora de ">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="80.0" layoutY="500.0" prefHeight="49.0" prefWidth="254.0" text="Salida:">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnRegresar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnRegresarAccion" styleClass="boton-transparente" />
+      <ImageView fitHeight="69.0" fitWidth="213.0" layoutX="27.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Kinal.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

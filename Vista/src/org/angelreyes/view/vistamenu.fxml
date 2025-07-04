@@ -14,21 +14,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="anchor-pane" stylesheets="@../resource/vistamenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.MenuController">
    <children>
-      <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#626d86" layoutX="62.0" layoutY="-49.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
-      <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#b28956f5" layoutX="681.0" layoutY="568.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.bottomAnchor="1.7941741943359375" AnchorPane.leftAnchor="487.79417419433594" AnchorPane.rightAnchor="431.79229736328125" />
-      <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#b28956" layoutX="1017.0" layoutY="42.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.leftAnchor="699.0" AnchorPane.rightAnchor="85.99850463867188" AnchorPane.topAnchor="-0.2018585205078125" />
-      <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="DODGERBLUE" layoutX="160.0" layoutY="368.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.bottomAnchor="46.0113525390625" AnchorPane.topAnchor="237.9097442626953" />
-      <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#546182" layoutX="949.0" layoutY="173.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" styleClass="CubicCurve" AnchorPane.bottomAnchor="144.82952880859375" AnchorPane.rightAnchor="-0.5726318359375" AnchorPane.topAnchor="130.01031494140625" />
+      <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#113686" layoutX="62.0" layoutY="-49.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
+      <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#113686f5" layoutX="681.0" layoutY="568.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.bottomAnchor="1.7941741943359375" AnchorPane.leftAnchor="487.79417419433594" AnchorPane.rightAnchor="431.79229736328125" />
+      <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#113686" layoutX="1017.0" layoutY="42.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.leftAnchor="699.0" AnchorPane.rightAnchor="85.99850463867188" AnchorPane.topAnchor="-0.2018585205078125" />
+      <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="#113686" layoutX="160.0" layoutY="368.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.bottomAnchor="46.0113525390625" AnchorPane.topAnchor="237.9097442626953" />
+      <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#113686" layoutX="949.0" layoutY="173.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" styleClass="CubicCurve" AnchorPane.bottomAnchor="144.82952880859375" AnchorPane.rightAnchor="-0.5726318359375" AnchorPane.topAnchor="130.01031494140625" />
       <BorderPane layoutX="254.0" layoutY="146.0" prefHeight="371.0" prefWidth="720.0" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="254.0" AnchorPane.rightAnchor="306.0" AnchorPane.topAnchor="146.0">
-         <top>
-            <Label text="Menu principal" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Courier New Italic" size="64.0" />
-               </font>
-            </Label>
-         </top>
          <left>
-            <GridPane prefHeight="202.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="245.0" prefWidth="239.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -41,7 +34,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnIngreso" mnemonicParsing="false" onAction="#clickManejadorEventos" prefHeight="50.0" prefWidth="129.0" styleClass="boton" text="Asistencia" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                  <Button fx:id="btnIngreso" mnemonicParsing="false" onAction="#clickManejadorEventos" prefHeight="50.0" prefWidth="168.0" styleClass="boton" text="Asistencia" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <font>
                         <Font name="Courier New" size="16.0" />
                      </font>
@@ -71,6 +64,13 @@
                </children>
             </GridPane>
          </right>
+         <top>
+            <Label text="MENU PRINCIPAL" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </top>
       </BorderPane>
       <Button fx:id="btnAbrirWeb" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" styleClass="boton-transparente">
          <graphic>
