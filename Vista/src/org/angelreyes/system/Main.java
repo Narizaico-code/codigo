@@ -10,6 +10,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.angelreyes.controller.AsistenciaController;
 import org.angelreyes.controller.AñadirController;
 import org.angelreyes.controller.IngresoController;
 import org.angelreyes.controller.MenuController;
@@ -61,7 +62,7 @@ public class Main extends Application {
 
     public void getMenuPrincipalView() {
         try {
-            MenuController control = (MenuController) cambiarEscena("VistaMenu.fxml", 1760, 990);
+            MenuController control = (MenuController) cambiarEscena("VistaMenu.fxml", 1000, 900);
             control.setPrincipal(this);
         } catch (Exception ex) {
             System.out.println("Error al ir al Menú Principal: " + ex.getMessage());
@@ -71,7 +72,7 @@ public class Main extends Application {
 
     public void getIngresoView() {
         try {
-            IngresoController control = (IngresoController) cambiarEscena("VistaIngreso.fxml", 1760, 990);
+            IngresoController control = (IngresoController) cambiarEscena("VistaIngreso.fxml", 1000, 900);
             control.setPrincipal(this);
         } catch (Exception e) {
             System.out.println("Error al ir al Ingreso: " + e.getMessage());
@@ -81,7 +82,16 @@ public class Main extends Application {
 
     public void getAñadirView() {
         try {
-            AñadirController control = (AñadirController) cambiarEscena("VistaAñadir.fxml", 1760, 990);
+            AñadirController control = (AñadirController) cambiarEscena("VistaAñadir.fxml", 1000, 900);
+            control.setPrincipal(this);
+        } catch (Exception e) {
+            System.out.println("Error al ir a Añadir: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    public void getAsistenciaView() {
+        try {
+            AsistenciaController control = (AsistenciaController) cambiarEscena("AsistenciaView.fxml", 1000, 900);
             control.setPrincipal(this);
         } catch (Exception e) {
             System.out.println("Error al ir a Añadir: " + e.getMessage());

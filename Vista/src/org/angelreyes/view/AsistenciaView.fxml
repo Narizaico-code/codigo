@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.CubicCurve?>
+
+<AnchorPane id="AnchorPane" prefHeight="858.0" prefWidth="1536.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.AsistenciaController">
+    <stylesheets>
+        <URL value="@/org/angelreyes/resource/asistencia.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="-8.0" prefHeight="990.0" prefWidth="1760.0" styleClass="anchorpane" stylesheets="@../resource/asistencia.css">
+         <children>
+            <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#0b4b86f5" layoutX="712.0" layoutY="577.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="QuadCurve" AnchorPane.bottomAnchor="0.0" />
+            <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="#0b4b86" layoutX="160.0" layoutY="519.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.topAnchor="376.94049072265625" />
+            <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#0b4b86" layoutX="1441.0" layoutY="295.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" AnchorPane.rightAnchor="0.111572265625" />
+            <BorderPane layoutX="162.0" layoutY="209.0" prefHeight="646.0" prefWidth="1384.0" AnchorPane.bottomAnchor="135.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="209.0" />
+            <Button id="button" layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnRegresarAccion" styleClass="boton-transparente" />
+            <TableView fx:id="tablaAsistencia" layoutX="374.0" layoutY="171.0" prefHeight="536.0" prefWidth="1167.0">
+               <columns>
+                  <TableColumn fx:id="colIdAsistencia" prefWidth="64.0" text="ID" />
+                  <TableColumn fx:id="colHoraEntrada" prefWidth="123.0" text="horaEntrada" />
+                  <TableColumn fx:id="colHoraSalida" prefWidth="107.0" text="horaSalida" />
+                  <TableColumn fx:id="colIdPersona" prefWidth="139.0" text="idPersona" />
+                  <TableColumn fx:id="colNombre" prefWidth="188.0" text="Nombre" />
+                  <TableColumn fx:id="colApellido" prefWidth="159.0" text="Apellido" />
+                  <TableColumn fx:id="colCorreo" prefWidth="223.0" text="Correo" />
+                  <TableColumn fx:id="colCarnet" prefWidth="163.0" text="Carnet" />
+               </columns>
+            </TableView>
+            <SplitMenuButton fx:id="smbFiltro" layoutX="160.0" layoutY="183.0" mnemonicParsing="false" onAction="#filtrarPorSeleccion" text="Filtrar por">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#activarFiltroFecha" text="Fecha" />
+                  <MenuItem mnemonicParsing="false" onAction="#filtrarPorNombre" text="Nombre" />
+               </items>
+            </SplitMenuButton>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Kinal.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtNombre" layoutX="206.0" layoutY="233.0" prefHeight="25.0" prefWidth="104.0" visible="false" />
+            <DatePicker fx:id="dpFechaFiltro" layoutX="193.0" layoutY="305.0" prefHeight="25.0" prefWidth="128.0" visible="false" />
+            <CubicCurve controlX1="464.20361328125" controlX2="339.79962158203125" controlY1="242.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#0b4b86" layoutX="-22.0" layoutY="-63.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
+            <Button id="button" layoutX="4.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnRegresarAccion" prefHeight="80.0" prefWidth="200.0" styleClass="boton-transparente" stylesheets="@../resource/asistencia.css" textFill="#072d4f00">
+               <graphic>
+                  <ImageView fitHeight="71.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Kinal.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#0b4b86" layoutX="1013.0" layoutY="23.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

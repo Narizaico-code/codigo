@@ -71,6 +71,13 @@
                </font>
             </Label>
          </top>
+         <bottom>
+            <Button fx:id="btnAsistencia" mnemonicParsing="false" onAction="#clickManejadorEventos" prefHeight="50.0" prefWidth="168.0" styleClass="boton" text="Registros" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Courier New" size="16.0" />
+               </font>
+            </Button>
+         </bottom>
       </BorderPane>
       <Button fx:id="btnAbrirWeb" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" styleClass="boton-transparente">
          <graphic>

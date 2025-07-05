@@ -170,13 +170,13 @@ delimiter //
 	create procedure sp_listarAsistencia()
 		begin
 			select A.idAsistencia,
-				   P.idPersona,
 				   A.horaEntrada,
                    A.horaSalida,
+			       P.idPersona,
 				   P.nombrePersona,
 				   P.apellidoPersona,
-                   P.carnetPersona,
-                   P.fotoPersona
+                   P.correoPersona,
+                   P.carnetPersona
 			from Asistencia A
 				inner join Persona P
     on a.idPersona = p.idPersona;
@@ -295,6 +295,8 @@ delimiter $$
     );
     end $$
 delimiter ;
+
+
 call sp_agregarPersona2(39021,'2023539','Elias Eliseo','Abularach Hernández','Tercero','BA3AM','N/A','JM','Educación Básica','0008025055');
 call sp_agregarPersona2(39022,'2023315','Carlos Daniel','Alvarado Murga','Tercero','BA3AM','N/A','JM','Educación Básica','0002744974');
 call sp_agregarPersona2(39023,'2023289','Luis Enrique','Armas Alarcón','Tercero','BA3AM','N/A','JM','Educación Básica','0002698280');
@@ -2165,5 +2167,6 @@ call sp_agregarPersona2(40887,'2023522','Carlos Roberto','Reyes Espinoza','Segun
 call sp_agregarPersona2(40888,'2023526','Javinsson Santiago','Aceituno Ortiz','Tercero','BA3AM','N/A','JM','Educación Básica','0002744969');
 call sp_agregarPersona2(40889,'2022353','Angel yadiel','Mayen poroj','Tercero','BA3AM','N/A','JM','Educación Básica','0005553772');
 call sp_agregarAsistencia(1,40659);
+
 call sp_listarPersona();
 call sp_listarAsistencia();

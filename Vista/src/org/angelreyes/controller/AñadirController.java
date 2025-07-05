@@ -82,13 +82,17 @@ public class AñadirController implements Initializable {
         this.principal = principal;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        configurarColumnas();
-        cargarTablaPersonas();
-        desactivarCampos();
-        tablaPersona.setOnMouseClicked(eventHandler -> cargarPersonaFormulario());
-    }
+  @Override
+public void initialize(URL url, ResourceBundle rb) {
+    configurarColumnas();
+    cargarTablaPersonas();
+    desactivarCampos(); // ya desactiva los inputs
+    gpDatos.setVisible(false); // oculta todo el formulario
+    tablaPersona.setOnMouseClicked(eventHandler -> cargarPersonaFormulario());
+    ajustarAlturaTabla();
+
+}
+
 
     private void activarCampos() {
         gpDatos.setDisable(false);
@@ -317,28 +321,36 @@ public class AñadirController implements Initializable {
     }
 
     public void actualizarEstadoFormulario(EstadoFormulario estado) {
-        estadoActual = estado;
-        boolean activo = (estado == EstadoFormulario.AGREGAR || estado == EstadoFormulario.EDITAR);
+    estadoActual = estado;
+    boolean activo = (estado == EstadoFormulario.AGREGAR || estado == EstadoFormulario.EDITAR);
 
-        if (activo) {
-            activarCampos();
-        } else {
-            desactivarCampos();
-        }
+    gpDatos.setDisable(!activo);      // Habilita o desactiva campos
+    gpDatos.setVisible(activo);       // Muestra u oculta el formulario
 
-        tablaPersona.setDisable(activo);
-        btnBuscar.setDisable(activo);
-        txtBuscar.setDisable(activo);
-        btnAnterior.setDisable(activo);
-        btnSiguiente.setDisable(activo);
-        if (estado == EstadoFormulario.EDITAR) {
-            txtIdPersona.setDisable(activo);
-        }
+    lbIdTexto.setDisable(!activo);
+    txtIdPersona.setDisable(!activo);
+    txtCarrera.setDisable(!activo);
+    txtTarjeta.setDisable(!activo);
 
-        btnNuevo.setText(activo ? "Guardar" : "Nuevo");
-        btnEliminar.setText(activo ? "Cancelar" : "Eliminar");
-        btnEditar.setDisable(activo);
+    tablaPersona.setDisable(activo);
+    btnBuscar.setDisable(activo);
+    txtBuscar.setDisable(activo);
+    btnAnterior.setDisable(activo);
+    btnSiguiente.setDisable(activo);
+
+    if (estado == EstadoFormulario.EDITAR) {
+        txtIdPersona.setDisable(activo);
     }
+
+    btnNuevo.setText(activo ? "Guardar" : "Nuevo");
+    btnEliminar.setText(activo ? "Cancelar" : "Eliminar");
+    btnEditar.setDisable(activo);
+    
+    if (estado == EstadoFormulario.NINGUNO) {
+    gpDatos.setVisible(false); // se oculta al cancelar o guardar
+    ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+}
+}
 
     public void eliminarPersona() {
         Persona personaAEliminar = (Persona) tablaPersona.getSelectionModel().getSelectedItem();
@@ -373,12 +385,16 @@ public class AñadirController implements Initializable {
                 limpiarFormulario();
                 System.out.println("Voy a preparar el formulario");
                 actualizarEstadoFormulario(EstadoFormulario.AGREGAR);
+                ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+
                 break;
             case AGREGAR:
                 System.out.println("Guardando nueva persona");
                 insertarNuevaPersona();
                 if (estadoActual == EstadoFormulario.AGREGAR) {
                     actualizarEstadoFormulario(EstadoFormulario.NINGUNO);
+                    ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+
                 }
                 break;
             case EDITAR:
@@ -386,6 +402,8 @@ public class AñadirController implements Initializable {
                 actualizarPersona();
                 if (estadoActual == EstadoFormulario.EDITAR) {
                     actualizarEstadoFormulario(EstadoFormulario.NINGUNO);
+                        ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+
                 }
                 break;
             default:
@@ -399,6 +417,8 @@ public class AñadirController implements Initializable {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una persona para editar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
+         ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+
         actualizarEstadoFormulario(EstadoFormulario.EDITAR);
     }
 
@@ -407,6 +427,8 @@ public class AñadirController implements Initializable {
         if (estadoActual == EstadoFormulario.NINGUNO) {
             eliminarPersona();
             System.out.println("Acabo de eliminar una persona en la DB");
+                ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+
         } else {
             actualizarEstadoFormulario(EstadoFormulario.NINGUNO);
             if (!listarPersonas.isEmpty()) {
@@ -415,7 +437,10 @@ public class AñadirController implements Initializable {
             } else {
                 limpiarFormulario();
             }
+            
         }
+            ajustarAlturaTabla(); // <-- ¡Importante! Esto se aplica al final para que se ajuste según el nuevo estado
+
     }
 
     @FXML
@@ -482,4 +507,15 @@ public class AñadirController implements Initializable {
         }
         return true;
     }
+    
+    private void ajustarAlturaTabla() {
+    if (gpDatos.isVisible()) {
+        tablaPersona.setPrefHeight(10); // más pequeña cuando el formulario aparece
+    } else {
+        tablaPersona.setPrefHeight(500); // más grande cuando el formulario está oculto
+    }
+}
+    
+    
+
 }

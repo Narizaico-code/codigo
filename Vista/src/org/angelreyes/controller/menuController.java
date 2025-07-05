@@ -21,7 +21,7 @@ public class MenuController implements Initializable {
     private Main principal;
 
     @FXML
-    private Button btnIngreso, btnAñadir, btnAbrirWeb;
+    private Button btnIngreso, btnAñadir, btnAbrirWeb,btnAsistencia;
 
     /**
      * Initializes the controller class.
@@ -34,12 +34,15 @@ public class MenuController implements Initializable {
         });
     }
 
-    @FXML
+   @FXML
     public void clickManejadorEventos(ActionEvent evento) {
         if (evento.getSource() == btnIngreso) {
             principal.getIngresoView();
         } else if (evento.getSource() == btnAñadir) {
             principal.getAñadirView();
+        } else if (evento.getSource() == btnAsistencia){
+            principal.getAsistenciaView();
         }
     }
 }
+

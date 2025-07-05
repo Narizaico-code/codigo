@@ -17,11 +17,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="990.0" prefWidth="1760.0" styleClass="anchorpane" stylesheets="@../resource/vistaañadir.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.angelreyes.controller.AñadirController">
    <children>
-      <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#13234a" layoutX="63.0" layoutY="-46.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
-      <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#13234af5" layoutX="712.0" layoutY="577.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="QuadCurve" AnchorPane.bottomAnchor="0.0" />
-      <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#172c5b" layoutX="812.0" layoutY="38.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.rightAnchor="522.0016326904297" AnchorPane.topAnchor="-2.198719024658203" />
-      <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="#13234a" layoutX="160.0" layoutY="519.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.topAnchor="376.94049072265625" />
-      <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#13234a" layoutX="1441.0" layoutY="295.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" AnchorPane.rightAnchor="0.111572265625" />
+      <CubicCurve controlX1="339.79962158203125" controlX2="339.79962158203125" controlY1="187.82046508789062" controlY2="6.0" endX="3.2035980224609375" endY="-44.179534912109375" fill="#626d86" layoutX="64.0" layoutY="-48.0" startX="-196.74803161621094" startY="242.82046508789062" stroke="BLACK" />
+      <CubicCurve controlX1="-75.0" controlX2="25.79962158203125" controlY1="17.0" controlY2="148.4733428955078" endX="166.0" endY="149.0" fill="#5673b2f5" layoutX="712.0" layoutY="577.0" startX="-192.0" startY="149.0" stroke="BLACK" styleClass="QuadCurve" AnchorPane.bottomAnchor="0.0" />
+      <CubicCurve controlX1="-128.17510986328125" controlX2="43.2313232421875" controlY1="-29.200767517089844" controlY2="128.5505828857422" endX="175.79962158203125" endY="-40.99999237060547" fill="#5572b4" layoutX="812.0" layoutY="38.0" startX="-316.94207763671875" startY="-40.9999885559082" stroke="BLACK" styleClass="CubicCurve" AnchorPane.rightAnchor="522.0016326904297" AnchorPane.topAnchor="-2.198719024658203" />
+      <CubicCurve controlX1="-123.79640197753906" controlX2="52.20359802246094" controlY1="42.66239929199219" controlY2="118.66194152832031" endX="-158.99998474121094" endY="304.69268798828125" fill="DODGERBLUE" layoutX="160.0" layoutY="519.0" startX="-159.0" startY="-129.0" stroke="BLACK" styleClass="CubicCurve" AnchorPane.topAnchor="376.94049072265625" />
+      <CubicCurve controlX1="330.391845703125" controlX2="139.7996826171875" controlY1="58.0" controlY2="294.0" endX="330.391845703125" endY="401.0" fill="#546182" layoutX="1441.0" layoutY="295.0" startX="330.391845703125" startY="-41.98968505859375" stroke="BLACK" AnchorPane.rightAnchor="0.111572265625" />
       <BorderPane layoutX="162.0" layoutY="209.0" prefHeight="658.0" prefWidth="1384.0" AnchorPane.bottomAnchor="123.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="209.0">
          <top>
             <TableView fx:id="tablaPersona" prefHeight="165.0" prefWidth="1047.0" styleClass="TableView" BorderPane.alignment="CENTER">
@@ -77,20 +77,21 @@
             </GridPane>
          </bottom>
          <center>
-            <GridPane fx:id="gpDatos" prefHeight="311.0" prefWidth="624.0" BorderPane.alignment="CENTER">
+            <GridPane fx:id="gpDatos" prefHeight="440.0" prefWidth="1021.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="642.0" minWidth="10.0" prefWidth="116.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="326.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="273.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="288.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="106.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="267.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="76.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="182.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="253.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="287.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="871.0" minWidth="10.0" prefWidth="334.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="123.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="133.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <TextField fx:id="txtNombre" prefHeight="35.0" prefWidth="50.0" promptText="Nombre del estudiante*" GridPane.columnIndex="1">
@@ -100,22 +101,22 @@
                   </TextField>
                   <Label prefHeight="19.0" prefWidth="95.0" text="Nombre:">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
                   <Label prefHeight="19.0" prefWidth="90.0" text="Apellido:" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
                   <Label prefHeight="19.0" prefWidth="71.0" text="Carnet:" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
                   <Label prefHeight="19.0" prefWidth="78.0" text="Correo:" GridPane.rowIndex="3">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="txtCorreo" layoutX="617.0" layoutY="48.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el carnet del estudiante*" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -133,68 +134,70 @@
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="10.0" layoutY="44.0" prefHeight="19.0" prefWidth="95.0" text="Grado:" GridPane.columnIndex="2">
+                  <ImageView fx:id="ivFoto" fitHeight="154.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                  <Label layoutX="10.0" layoutY="44.0" prefHeight="19.0" prefWidth="95.0" text="Grado:" GridPane.columnIndex="3">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtGrado" prefHeight="42.0" prefWidth="200.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="3">
+                  <TextField fx:id="txtGrado" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4">
                      <font>
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="438.0" layoutY="44.0" prefHeight="19.0" prefWidth="157.0" text="Seccion tecnica:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Label layoutX="438.0" layoutY="44.0" prefHeight="19.0" prefWidth="157.0" text="Seccion tecnica:" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSeccion" layoutX="574.0" layoutY="36.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <TextField fx:id="txtSeccion" layoutX="574.0" layoutY="36.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <font>
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="407.0" layoutY="163.0" prefHeight="19.0" prefWidth="157.0" text="Academica:" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label layoutX="407.0" layoutY="163.0" prefHeight="19.0" prefWidth="157.0" text="Academica:" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtGrupoAcademico" layoutX="574.0" layoutY="155.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <TextField fx:id="txtGrupoAcademico" layoutX="574.0" layoutY="155.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="407.0" layoutY="297.0" prefHeight="19.0" prefWidth="157.0" text="Jornada:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Label layoutX="407.0" layoutY="297.0" prefHeight="19.0" prefWidth="157.0" text="Jornada:" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <font>
-                        <Font name="Courier New Bold" size="35.0" />
+                        <Font name="Courier New" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtJornada" layoutX="100.0" layoutY="36.0" prefHeight="35.0" prefWidth="325.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <TextField fx:id="txtJornada" layoutX="100.0" layoutY="36.0" prefHeight="35.0" prefWidth="50.0" promptText="Ingrese el nombre del estudiante*" GridPane.columnIndex="4" GridPane.rowIndex="3">
                      <font>
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="lbIdTexto" prefHeight="17.0" prefWidth="54.0" text="Id:" GridPane.columnIndex="4">
-                     <font>
-                        <Font name="Courier New Bold" size="35.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="19.0" prefWidth="157.0" text="   Carrera:" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Courier New Bold" size="35.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbIdTexto1" prefHeight="19.0" prefWidth="99.0" text="  Tarjeta" GridPane.columnIndex="4" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="Courier New Bold" size="35.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtIdPersona" promptText="ID PERSONA" GridPane.columnIndex="5" />
-                  <TextField fx:id="txtCarrera" prefHeight="35.0" prefWidth="50.0" promptText="Carrera del estudiante" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                  <TextField fx:id="txtCarrera" prefHeight="35.0" prefWidth="50.0" promptText="Carrera del estudiante" GridPane.columnIndex="6">
                      <font>
                         <Font name="Courier New Bold Italic" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtTarjeta" promptText="Tarjeta RF" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtIdPersona" promptText="ID PERSONA" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtTarjeta" promptText="Tarjeta RF" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <Label fx:id="lbIdTexto" prefHeight="17.0" prefWidth="54.0" text="Id:" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbIdTexto1" prefHeight="19.0" prefWidth="99.0" text="Tarjeta" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="19.0" prefWidth="95.0" text="Carrera:" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="Courier New" size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="ivFoto" fitHeight="100.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </center>
@@ -208,16 +211,15 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="txtBuscar" layoutX="169.0" layoutY="153.0" prefHeight="45.0" prefWidth="360.0" promptText=" Busqueda 🔍">
+      <TextField fx:id="txtBuscar" layoutX="170.0" layoutY="151.0" prefHeight="45.0" prefWidth="277.0" promptText="Busqueda 🔍">
          <font>
             <Font name="Courier New Italic" size="16.0" />
          </font>
       </TextField>
-      <Button id="button" fx:id="btnBuscar" layoutX="540.0" layoutY="153.0" mnemonicParsing="false" onAction="#buscarMetodoPersona" prefHeight="40.0" prefWidth="184.0" styleClass="botones_extra" text="Buscar">
+      <Button id="button" fx:id="btnBuscar" layoutX="459.0" layoutY="154.0" mnemonicParsing="false" onAction="#buscarMetodoPersona" prefHeight="40.0" prefWidth="134.0" styleClass="botones_extra" text="Buscar">
          <font>
             <Font name="Courier New" size="12.0" />
          </font>
       </Button>
-      <ImageView fx:id="ivFoto" fitHeight="116.0" fitWidth="116.0" layoutX="1372.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
