@@ -86,6 +86,7 @@ public class IngresoController implements Initializable {
             JOptionPane.showMessageDialog(null,
                     "No se encontró persona con id " + nroTarjeta,
                     "Error", JOptionPane.ERROR_MESSAGE);
+                    txtLeer.clear();
             return;
         }
         int idPersonaPK = persona.getIdPersona();
